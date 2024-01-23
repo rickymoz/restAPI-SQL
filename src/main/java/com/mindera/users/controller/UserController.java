@@ -42,7 +42,12 @@ public class UserController {
     }
 
     @PatchMapping("/{userId}")
-    public User updateUserById(@PathVariable Long userId, @RequestBody Map<String, String> toUpdate) {
-        return userService.updateUserById(userId, toUpdate);
+    public User patchUser(@PathVariable Long userId, @RequestBody Map<String, String> toUpdate) {
+        return userService.patchUser(userId, toUpdate);
+    }
+
+   @PutMapping("/{userId}")
+    public User putUser(@PathVariable Long userId, @RequestBody User toUpdate) {
+        return userService.putUser(userId, toUpdate);
     }
 }
