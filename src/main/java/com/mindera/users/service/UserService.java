@@ -34,17 +34,27 @@ public class UserService {
         userRepository.deleteById(userId);
     }
 
-    public User updateUserById(Long userId, Map<String, String> toUpdate) {
-        User user = userRepository.findById(userId).orElse(null);
-        if (user != null) {
+    public User patchUser(Long userId, Map<String, String> toUpdate) {
+        User updatedUser = userRepository.findById(userId).orElse(null);
+        if (updatedUser != null) {
             if (toUpdate.containsKey("username")) {
-                user.setUsername(toUpdate.get("username"));
+                updatedUser.setUsername(toUpdate.get("username"));
             }
             if (toUpdate.containsKey("password")) {
-                user.setPassword(toUpdate.get("password"));
+                updatedUser.setPassword(toUpdate.get("password"));
             }
-            userRepository.save(user);
+            userRepository.save(updatedUser);
         }
-        return user;
+        return updatedUser;
+    }
+
+    public User putUser(Long userId, User user) {
+        User updatedUser = userRepository.findById(userId).orElse(null);
+        if(updatedUser != null) {
+            updatedUser.setUsername(user.getUsername());
+            updatedUser.setPassword(user.getPassword());
+            userRepository.save(updatedUser);
+        }
+        return updatedUser;
     }
 }
