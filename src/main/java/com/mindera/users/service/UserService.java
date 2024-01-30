@@ -1,6 +1,7 @@
 package com.mindera.users.service;
 
 import com.mindera.users.entity.User;
+import com.mindera.users.exceptions.UserNotFoundException;
 import com.mindera.users.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -36,15 +37,19 @@ public class UserService {
 
     public User patchUser(Long userId, Map<String, String> toUpdate) {
         User updatedUser = userRepository.findById(userId).orElse(null);
-        if (updatedUser != null) {
-            if (toUpdate.containsKey("username")) {
-                updatedUser.setUsername(toUpdate.get("username"));
-            }
-            if (toUpdate.containsKey("password")) {
-                updatedUser.setPassword(toUpdate.get("password"));
-            }
-            userRepository.save(updatedUser);
+        if (updatedUser == null) {
+            System.out.println("User not found!");
+            throw new UserNotFoundException("User not found!");
         }
+
+        if (toUpdate.containsKey("username")) {
+            updatedUser.setUsername(toUpdate.get("username"));
+        }
+        if (toUpdate.containsKey("password")) {
+            updatedUser.setPassword(toUpdate.get("password"));
+        }
+        userRepository.save(updatedUser);
+
         return updatedUser;
     }
 
