@@ -3,12 +3,11 @@ package com.mindera.users.controller;
 import com.mindera.users.entity.User;
 import com.mindera.users.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/user")
@@ -32,7 +31,7 @@ public class UserController {
     }
 
     @GetMapping("/{userId}")
-    public User getUserById(@PathVariable Long userId) {
+    public Optional<User> getUserById(@PathVariable Long userId) {
         return userService.getUserById(userId);
     }
 
