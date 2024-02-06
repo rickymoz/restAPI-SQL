@@ -1,6 +1,9 @@
 package com.mindera.users.service;
 
 import com.mindera.users.entity.User;
+import com.mindera.users.exceptions.CannotBeNullException;
+import com.mindera.users.exceptions.NotMatchingException;
+import com.mindera.users.exceptions.UserCannotChangeException;
 import com.mindera.users.exceptions.UserNotFoundException;
 import com.mindera.users.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,10 +11,10 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 @Service
 public class UserService {
-
     private final UserRepository userRepository;
 
     @Autowired
@@ -24,11 +27,14 @@ public class UserService {
     }
 
     public User addUser(User user) {
+        if(user.getUsername().isEmpty() || user.getUsername().isBlank() || user.getPassword().isEmpty() || user.getPassword().isBlank() || user.getEmail().isEmpty() || user.getEmail().isBlank())
+            throw new CannotBeNullException("User Id user name and user email cannot be null or empty");
+
         return userRepository.save(user);
     }
 
-    public User getUserById(Long userId) {
-        return userRepository.findById(userId).orElse(null);
+    public Optional<User> getUserById(Long userId) {
+        return userRepository.findById(userId);
     }
 
     public void deleteUserById(Long userId) {
@@ -36,11 +42,13 @@ public class UserService {
     }
 
     public User patchUser(Long userId, Map<String, String> toUpdate) {
-        User updatedUser = userRepository.findById(userId).orElse(null);
-        if (updatedUser == null) {
+        Optional<User> updatedUserOptional = userRepository.findById(userId);
+        if (updatedUserOptional.isEmpty()) {
             System.out.println("User not found!");
             throw new UserNotFoundException("User not found!");
         }
+
+        User updatedUser = updatedUserOptional.get();
 
         if (toUpdate.containsKey("username")) {
             updatedUser.setUsername(toUpdate.get("username"));
@@ -54,12 +62,17 @@ public class UserService {
     }
 
     public User putUser(Long userId, User user) {
-        User updatedUser = userRepository.findById(userId).orElse(null);
-        if(updatedUser != null) {
-            updatedUser.setUsername(user.getUsername());
-            updatedUser.setPassword(user.getPassword());
-            userRepository.save(updatedUser);
-        }
+        Optional<User> updatedUserOptional = userRepository.findById(userId);
+        if(updatedUserOptional.isEmpty()) throw new UserNotFoundException("User not found!");
+
+        User updatedUser = updatedUserOptional.get();
+        if(!updatedUser.getId().equals(user.getId())) throw new NotMatchingException("UserId and request body id do not match");
+        if(!updatedUser.getEmail().equals(user.getEmail())) throw new UserCannotChangeException("User email cannot be updated!");
+        updatedUser.setUsername(user.getUsername());
+        updatedUser.setPassword(user.getPassword());
+        updatedUser.setEmail(user.getEmail());
+        userRepository.save(updatedUser);
+
         return updatedUser;
     }
 }
