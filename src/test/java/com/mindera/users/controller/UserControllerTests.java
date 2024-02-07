@@ -21,7 +21,6 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
 
-import static org.hamcrest.Matchers.hasSize;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
@@ -147,7 +146,7 @@ public class UserControllerTests {
     // If user updates successfully -> HttpStatus.OK
     @Test
     public void testPutUserWhenFindByIdReturnsUserThrowsOk() throws Exception {
-        User user = new User(1L, "user123", "password123", "user@gmail.com" );
+        User user = new User(1L, "user123", "password123", "user@gmail.com");
 
         Mockito.when(userRepository.findById(USER_1.getId())).thenReturn(Optional.of(USER_1));
         mockMvc.perform(MockMvcRequestBuilders.put("/user/2")
@@ -160,7 +159,7 @@ public class UserControllerTests {
     // If userId does not match user.getUserId-> HttpStatus.BAD_REQUEST -> "UserId and request body id do not match"
     @Test
     public void testPutUserWhenUserIdDoesNotMatchReturnsUserThrowsNotMatchingException() throws Exception {
-        User user = new User(1L, "user123", "password123", "user@gmail.com" );
+        User user = new User(1L, "user123", "password123", "user@gmail.com");
 
         Mockito.when(userRepository.findById(user.getId())).thenReturn(Optional.of(user));
 
@@ -187,8 +186,8 @@ public class UserControllerTests {
     // If user already exists with different email (cannot change email) -> HttpStatus.CONFLICT "User email cannot be updated"
     @Test
     public void testPutUserWithDifferentEmailThrowsUserCannotChangeException() throws Exception {
-        User user = new User(1L, "user123", "password123", "user@gmail.com" );
-        User updatedUser = new User(1L, "user123", "password123", "updatedUser@gmail.com" );
+        User user = new User(1L, "user123", "password123", "user@gmail.com");
+        User updatedUser = new User(1L, "user123", "password123", "updatedUser@gmail.com");
 
         Mockito.when(userRepository.findById(user.getId())).thenReturn(Optional.of(user));
         mockMvc.perform(MockMvcRequestBuilders.put("/user/1")
