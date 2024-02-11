@@ -61,6 +61,9 @@ public class UserService {
         if (toUpdate.containsKey("password")) {
             updatedUser.setPassword(toUpdate.get("password"));
         }
+        if (toUpdate.containsKey("email")) {
+            updatedUser.setEmail(toUpdate.get("email"));
+        }
         userRepository.save(updatedUser);
 
         return updatedUser;

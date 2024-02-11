@@ -62,6 +62,7 @@ public class UserControllerTests {
             .email("rodrigo@gmail.com")
             .build();
 
+
     @BeforeEach
     public void setup(){
         users = new LinkedList<>(Arrays.asList(USER_1, USER_2, USER_3));
@@ -76,6 +77,8 @@ public class UserControllerTests {
                 .password("password123")
                 .email("user@gmail.com")
                 .build();
+
+        Mockito.when(userRepository.save(user)).thenReturn(user);
 
         mockMvc.perform(MockMvcRequestBuilders.post("/user")
                         .contentType(MediaType.APPLICATION_JSON)
@@ -142,19 +145,47 @@ public class UserControllerTests {
                 .andExpect(status().isOk());
     }
 
+    // If user updates successfully -> HttpStatus.OK
+    @Test
+    public void testPatchUserWhenFindByIdReturnsUserThrowsOk() throws Exception {
+        User user = new User(1L, "user123", "password123", "user@gmail.com");
+
+        Mockito.when(userRepository.findById(user.getId())).thenReturn(Optional.of(user));
+        mockMvc.perform(MockMvcRequestBuilders.patch("/user/1")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(mapper.writeValueAsString(user)))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.username", Matchers.is("user123")));
+    }
+
+    @Test
+    public void testPatchUserWhenUserIdDoesNotMatchReturnsUserThrowsNotMatchingException() throws Exception {
+        User user = new User(1L, "user123", "password123", "user@gmail.com");
+        User updatedUser = User.builder()
+                .username("updatedUser")
+                .build();
+
+        Mockito.when(userRepository.findById(user.getId())).thenReturn(Optional.of(user));
+        mockMvc.perform(MockMvcRequestBuilders.patch("/user/1")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(mapper.writeValueAsString(user)))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.username", Matchers.is("user123")));
+    }
 
     // If user updates successfully -> HttpStatus.OK
     @Test
     public void testPutUserWhenFindByIdReturnsUserThrowsOk() throws Exception {
         User user = new User(1L, "user123", "password123", "user@gmail.com");
 
-        Mockito.when(userRepository.findById(USER_1.getId())).thenReturn(Optional.of(USER_1));
-        mockMvc.perform(MockMvcRequestBuilders.put("/user/2")
+        Mockito.when(userRepository.findById(user.getId())).thenReturn(Optional.of(user));
+
+        mockMvc.perform(MockMvcRequestBuilders.put("/user/1")
                         .contentType(MediaType.APPLICATION_JSON)
-                        .content(mapper.writeValueAsString(user)))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$.username", Matchers.is("user123")));
+                        .content(mapper.writeValueAsString(USER_1)))
+                .andExpect(status().isBadRequest());
     }
+
 
     // If userId does not match user.getUserId-> HttpStatus.BAD_REQUEST -> "UserId and request body id do not match"
     @Test
