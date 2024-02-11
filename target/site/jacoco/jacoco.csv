@@ -1,0 +1,10 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+Users,com.mindera.users,UsersApplication,5,3,0,0,2,1,1,1,1,1
+Users,com.mindera.users.exceptions,NotMatchingException,0,4,0,0,0,2,0,1,0,1
+Users,com.mindera.users.exceptions,UserCannotChangeException,0,4,0,0,0,2,0,1,0,1
+Users,com.mindera.users.exceptions,UserNotFoundException,0,4,0,0,0,2,0,1,0,1
+Users,com.mindera.users.exceptions,CannotBeNullException,0,4,0,0,0,2,0,1,0,1
+Users,com.mindera.users.service,UserService,52,121,9,17,13,21,8,12,2,5
+Users,com.mindera.users.controller,UserController,16,21,0,0,4,6,3,4,3,4
+Users,com.mindera.users.entity,User.UserBuilder,10,35,0,0,0,1,1,6,1,6
+Users,com.mindera.users.entity,User,98,116,27,11,0,8,21,13,2,13
