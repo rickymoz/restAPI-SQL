@@ -37,17 +37,17 @@ public class UserController {
 
     @DeleteMapping(&quot;/{userId}&quot;)
     public void deleteUserById(@PathVariable Long userId) {
-<span class="nc" id="L40">        userService.deleteUserById(userId);</span>
-<span class="nc" id="L41">    }</span>
+<span class="fc" id="L40">        userService.deleteUserById(userId);</span>
+<span class="fc" id="L41">    }</span>
 
-    @PatchMapping(&quot;/{userId}&quot;)
+    /*@PatchMapping(&quot;/{userId}&quot;)
     public User patchUser(@PathVariable Long userId, @RequestBody Map&lt;String, String&gt; toUpdate) {
-<span class="nc" id="L45">        return userService.patchUser(userId, toUpdate);</span>
-    }
+        return userService.patchUser(userId, toUpdate);
+    }*/
 
    @PutMapping(&quot;/{userId}&quot;)
     public User putUser(@PathVariable Long userId, @RequestBody User toUpdate) {
-<span class="fc" id="L50">        return userService.putUser(userId, toUpdate);</span>
+<span class="nc" id="L50">        return userService.putUser(userId, toUpdate);</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

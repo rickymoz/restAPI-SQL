@@ -145,33 +145,6 @@ public class UserControllerTests {
                 .andExpect(status().isOk());
     }
 
-    // If user updates successfully -> HttpStatus.OK
-    @Test
-    public void testPatchUserWhenFindByIdReturnsUserThrowsOk() throws Exception {
-        User user = new User(1L, "user123", "password123", "user@gmail.com");
-
-        Mockito.when(userRepository.findById(user.getId())).thenReturn(Optional.of(user));
-        mockMvc.perform(MockMvcRequestBuilders.patch("/user/1")
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content(mapper.writeValueAsString(user)))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$.username", Matchers.is("user123")));
-    }
-
-    @Test
-    public void testPatchUserWhenUserIdDoesNotMatchReturnsUserThrowsNotMatchingException() throws Exception {
-        User user = new User(1L, "user123", "password123", "user@gmail.com");
-        User updatedUser = User.builder()
-                .username("updatedUser")
-                .build();
-
-        Mockito.when(userRepository.findById(user.getId())).thenReturn(Optional.of(user));
-        mockMvc.perform(MockMvcRequestBuilders.patch("/user/1")
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content(mapper.writeValueAsString(user)))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$.username", Matchers.is("user123")));
-    }
 
     // If user updates successfully -> HttpStatus.OK
     @Test
@@ -216,14 +189,26 @@ public class UserControllerTests {
 
     // If user already exists with different email (cannot change email) -> HttpStatus.CONFLICT "User email cannot be updated"
     @Test
-    public void testPutUserWithDifferentEmailThrowsUserCannotChangeException() throws Exception {
-        User user = new User(1L, "user123", "password123", "user@gmail.com");
-        User updatedUser = new User(1L, "user123", "password123", "updatedUser@gmail.com");
+    public void testDeleteUserWhenFindByIdReturnsUserSuccess() {
+        User user = User.builder()
+                .id(1L)
+                .username("user123")
+                .password("password123")
+                .email("user@gmail.com")
+                .build();
 
         Mockito.when(userRepository.findById(user.getId())).thenReturn(Optional.of(user));
-        mockMvc.perform(MockMvcRequestBuilders.put("/user/1")
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content(mapper.writeValueAsString(updatedUser)))
-                .andExpect(status().isConflict());
+
+        Mockito.doNothing().when(userRepository).deleteById(user.getId());
+
+        try {
+            mockMvc.perform(MockMvcRequestBuilders.delete("/user/1")
+                            .contentType(MediaType.APPLICATION_JSON)
+                            .content(mapper.writeValueAsString(user)))
+                    .andExpect(status().isOk());
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
+
 }

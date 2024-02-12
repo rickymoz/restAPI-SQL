@@ -43,10 +43,13 @@ public class UserService {
     }
 
     public void deleteUserById(Long userId) {
+        Optional<User> user = userRepository.findById(userId);
+        if (user.isEmpty()) throw new UserNotFoundException("User not found!");
+
         userRepository.deleteById(userId);
     }
 
-    public User patchUser(Long userId, Map<String, String> toUpdate) {
+    /*public User patchUser(Long userId, Map<String, String> toUpdate) {
         Optional<User> updatedUserOptional = userRepository.findById(userId);
         if (updatedUserOptional.isEmpty()) {
             System.out.println("User not found!");
@@ -67,7 +70,7 @@ public class UserService {
         userRepository.save(updatedUser);
 
         return updatedUser;
-    }
+    }*/
 
     public User putUser(Long userId, User user) {
         Optional<User> updatedUserOptional = userRepository.findById(userId);

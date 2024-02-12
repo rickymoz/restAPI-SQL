@@ -40,10 +40,10 @@ public class UserController {
         userService.deleteUserById(userId);
     }
 
-    @PatchMapping("/{userId}")
+    /*@PatchMapping("/{userId}")
     public User patchUser(@PathVariable Long userId, @RequestBody Map<String, String> toUpdate) {
         return userService.patchUser(userId, toUpdate);
-    }
+    }*/
 
    @PutMapping("/{userId}")
     public User putUser(@PathVariable Long userId, @RequestBody User toUpdate) {
