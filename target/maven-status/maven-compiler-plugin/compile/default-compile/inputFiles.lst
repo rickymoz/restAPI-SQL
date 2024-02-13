@@ -1,6 +1,6 @@
 /Users/mindera/Desktop/restAPI-SQL/src/main/java/com/mindera/users/repository/UserRepository.java
 /Users/mindera/Desktop/restAPI-SQL/src/main/java/com/mindera/users/entity/User.java
-/Users/mindera/Desktop/restAPI-SQL/src/main/java/com/mindera/users/exceptions/CannotBeNullException.java
+/Users/mindera/Desktop/restAPI-SQL/src/main/java/com/mindera/users/exceptions/CannotBeEmptyOrNullException.java
 /Users/mindera/Desktop/restAPI-SQL/src/main/java/com/mindera/users/service/UserService.java
 /Users/mindera/Desktop/restAPI-SQL/src/main/java/com/mindera/users/controller/UserController.java
 /Users/mindera/Desktop/restAPI-SQL/src/main/java/com/mindera/users/exceptions/UserCannotChangeException.java

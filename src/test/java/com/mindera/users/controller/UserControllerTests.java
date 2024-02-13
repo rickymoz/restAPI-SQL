@@ -1,5 +1,6 @@
 package com.mindera.users.controller;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mindera.users.entity.User;
 import com.mindera.users.repository.UserRepository;
@@ -25,7 +26,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @SpringBootTest
-@AutoConfigureMockMvc
+@AutoConfigureMockMvc(addFilters=false)
 public class UserControllerTests {
 
     @Autowired
@@ -36,12 +37,10 @@ public class UserControllerTests {
 
     private final ObjectMapper mapper = new ObjectMapper();
 
-    private List<User> users;
-
     User newUser = User.builder()
-            .username("teste")
-            .password("teste123")
-            .email("teste@gmail.com")
+            .username("test")
+            .password("test123")
+            .email("test@gmail.com")
             .build();
     User USER_1 = User.builder()
             .id(2L)
@@ -62,15 +61,14 @@ public class UserControllerTests {
             .email("rodrigo@gmail.com")
             .build();
 
-
     @BeforeEach
     public void setup(){
-        users = new LinkedList<>(Arrays.asList(USER_1, USER_2, USER_3));
+        List<User> users = new LinkedList<>(Arrays.asList(USER_1, USER_2, USER_3));
         Mockito.mock(UserRepository.class);
     }
 
     @Test
-    public void testPostUser() throws Exception {
+    void testPostUser() throws Exception {
         User user = User.builder()
                 .id(1L)
                 .username("user123")
@@ -88,10 +86,11 @@ public class UserControllerTests {
     }
 
 
-    // If id, name or email null or empty -> HttpStatus.BAD_REQUEST -> "User Id user name and user email cannot be null or empty"
+    // If ID, username, password or email null or empty -> HttpStatus.BAD_REQUEST -> "User ID username, password and user email cannot be null or empty"
     @Test
-    public void testPostUserWithEmptyUsernameThrowsUserCannotBeNullException() throws Exception {
-        User user = User.builder()
+    void testPostUserWithEmptyOrNullFieldsThrowsCannotBeEmptyOrNullException() throws Exception {
+        // username > empty
+        User user1 = User.builder()
                 .id(1L)
                 .username("")
                 .password("password123")
@@ -100,16 +99,26 @@ public class UserControllerTests {
 
         mockMvc.perform(MockMvcRequestBuilders.post("/user")
                         .contentType(MediaType.APPLICATION_JSON)
-                        .content(mapper.writeValueAsString(user)))
+                        .content(mapper.writeValueAsString(user1)))
                 .andExpect(status().isBadRequest());
-    }
+
+        // username > blank
+        User user2 = User.builder()
+                .id(2L)
+                .username(" ")
+                .password("password123")
+                .email("user@gmail.com")
+                .build();
+
+        mockMvc.perform(MockMvcRequestBuilders.post("/user")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(mapper.writeValueAsString(user2)))
+                .andExpect(status().isBadRequest());
 
 
-    // If id, name or email null or empty -> HttpStatus.BAD_REQUEST -> "User Id user name and user email cannot be null or empty"
-    @Test
-    public void testPostUserWithEmptyPasswordThrowsUserCannotBeNullException() throws Exception {
-        User user = User.builder()
-                .id(1L)
+        // password > empty
+        User user3 = User.builder()
+                .id(3L)
                 .username("user123")
                 .password("")
                 .email("user@gmail.com")
@@ -117,16 +126,25 @@ public class UserControllerTests {
 
         mockMvc.perform(MockMvcRequestBuilders.post("/user")
                         .contentType(MediaType.APPLICATION_JSON)
-                        .content(mapper.writeValueAsString(user)))
+                        .content(mapper.writeValueAsString(user3)))
                 .andExpect(status().isBadRequest());
-    }
 
+        // password > blank
+        User user4 = User.builder()
+                .id(4L)
+                .username("user123")
+                .password(" ")
+                .email("user@gmail.com")
+                .build();
 
-    // If id, name or email null or empty -> HttpStatus.BAD_REQUEST -> "User Id user name and user email cannot be null or empty"
-    @Test
-    public void testPostUserWithEmptyEmailThrowsUserCannotBeNullException() throws Exception {
-        User user = User.builder()
-                .id(1L)
+        mockMvc.perform(MockMvcRequestBuilders.post("/user")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(mapper.writeValueAsString(user4)))
+                .andExpect(status().isBadRequest());
+
+        // email > empty
+        User user5 = User.builder()
+                .id(3L)
                 .username("user123")
                 .password("password123")
                 .email("")
@@ -134,13 +152,27 @@ public class UserControllerTests {
 
         mockMvc.perform(MockMvcRequestBuilders.post("/user")
                         .contentType(MediaType.APPLICATION_JSON)
-                        .content(mapper.writeValueAsString(user)))
+                        .content(mapper.writeValueAsString(user5)))
+                .andExpect(status().isBadRequest());
+
+        // email > blank
+        User user6 = User.builder()
+                .id(4L)
+                .username("user123")
+                .password("password123")
+                .email(" ")
+                .build();
+
+        mockMvc.perform(MockMvcRequestBuilders.post("/user")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(mapper.writeValueAsString(user6)))
                 .andExpect(status().isBadRequest());
     }
 
 
+
     @Test
-    public void testGetAllUsers() throws Exception {
+    void testGetAllUsers() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.get("/user"))
                 .andExpect(status().isOk());
     }
@@ -148,7 +180,7 @@ public class UserControllerTests {
 
     // If user updates successfully -> HttpStatus.OK
     @Test
-    public void testPutUserWhenFindByIdReturnsUserThrowsOk() throws Exception {
+    void testPutUserWhenFindByIdReturnsUserThrowsOk() throws Exception {
         User user = new User(1L, "user123", "password123", "user@gmail.com");
 
         Mockito.when(userRepository.findById(user.getId())).thenReturn(Optional.of(user));
@@ -162,7 +194,7 @@ public class UserControllerTests {
 
     // If userId does not match user.getUserId-> HttpStatus.BAD_REQUEST -> "UserId and request body id do not match"
     @Test
-    public void testPutUserWhenUserIdDoesNotMatchReturnsUserThrowsNotMatchingException() throws Exception {
+    void testPutUserWhenUserIdDoesNotMatchReturnsUserThrowsNotMatchingException() throws Exception {
         User user = new User(1L, "user123", "password123", "user@gmail.com");
 
         Mockito.when(userRepository.findById(user.getId())).thenReturn(Optional.of(user));
@@ -176,7 +208,7 @@ public class UserControllerTests {
 
     // If user does not exist -> HttpStatus.NOT_FOUND -> "UserId does not exist"
     @Test
-    public void testPutUserWhenFindByIdReturnsNullThrowsNotFound() throws Exception {
+    void testPutUserWhenFindByIdReturnsNullThrowsNotFound() throws Exception {
         User user = new User(1L, "user123", "password123", "user@gmail.com");
 
         Mockito.when(userRepository.findById(user.getId())).thenReturn(Optional.empty());
@@ -186,10 +218,126 @@ public class UserControllerTests {
                 .andExpect(status().isNotFound());
     }
 
-
-    // If user already exists with different email (cannot change email) -> HttpStatus.CONFLICT "User email cannot be updated"
     @Test
-    public void testDeleteUserWhenFindByIdReturnsUserSuccess() {
+    void testPutUserWithDifferentEmailThrowsUserCannotChangeException() throws Exception {
+        User user = new User(1L, "user123", "password123", "user@gmail.com");
+
+        Mockito.when(userRepository.findById(user.getId())).thenReturn(Optional.of(user));
+
+        User updatedUser = new User(1L, "user123", "password123", "userUpdated@gmail.com");
+
+        mockMvc.perform(MockMvcRequestBuilders.put("/user/1")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(mapper.writeValueAsString(updatedUser)))
+                .andExpect(status().isConflict());
+    }
+
+
+
+
+    // --------------- \\
+    //PATCH
+
+    @Test
+    void testPatchUserSuccess() throws Exception {
+        User existingUser1 = User.builder()
+                .id(1L)
+                .username("user123")
+                .password("password123")
+                .email("user@gmail.com")
+                .build();
+
+        Mockito.when(userRepository.findById(existingUser1.getId())).thenReturn(Optional.of(existingUser1));
+
+        User updatedUser1 = User.builder()
+                .id(1L)
+                .username("newUsername")
+                .email("user@gmail.com")
+                .build();
+
+        mockMvc.perform(MockMvcRequestBuilders.patch("/user/1")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(mapper.writeValueAsString(updatedUser1)))
+                .andExpect(status().isOk());
+
+        User existingUser2 = User.builder()
+                .id(1L)
+                .username("user123")
+                .password("password123")
+                .email("user@gmail.com")
+                .build();
+
+        Mockito.when(userRepository.findById(existingUser2.getId())).thenReturn(Optional.of(existingUser2));
+
+        User updatedUser2 = User.builder()
+                .id(1L)
+                .password("updatedPassword123")
+                .email("user@gmail.com")
+                .build();
+
+        mockMvc.perform(MockMvcRequestBuilders.patch("/user/1")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(mapper.writeValueAsString(updatedUser2)))
+                .andExpect(status().isOk());
+
+    }
+
+    @Test
+    void testPatchUserUserIdNotMatching() throws Exception {
+        User existingUser = User.builder()
+                .id(1L)
+                .username("user123")
+                .password("password123")
+                .email("user@gmail.com")
+                .build();
+
+        Mockito.when(userRepository.findById(existingUser.getId())).thenReturn(Optional.of(existingUser));
+
+        User updatedUser = User.builder()
+                .id(2L) // Different ID
+                .username("newUsername")
+                .build();
+
+        mockMvc.perform(MockMvcRequestBuilders.patch("/user/1")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(mapper.writeValueAsString(updatedUser)))
+                .andExpect(status().isBadRequest());
+    }
+
+
+    @Test
+    void testPatchUserUserNotFound() throws Exception {
+        long userId = 1L;
+
+        Mockito.when(userRepository.findById(userId)).thenReturn(Optional.empty());
+
+        mockMvc.perform(MockMvcRequestBuilders.patch("/user/1")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(mapper.writeValueAsString(new User())))
+                .andExpect(status().isNotFound());
+    }
+
+    @Test
+    void testPatchUserWithDifferentEmailThrowsUserCannotChangeException() throws Exception {
+        User user = new User(1L, "user123", "password123", "user@gmail.com");
+
+        Mockito.when(userRepository.findById(user.getId())).thenReturn(Optional.of(user));
+
+        User updatedUser = User.builder()
+                .id(1L)
+                .email("updatedUser@gmail.com")
+                .build();
+
+        mockMvc.perform(MockMvcRequestBuilders.patch("/user/1")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(mapper.writeValueAsString(updatedUser)))
+                .andExpect(status().isConflict());
+    }
+
+    // ---------------- \\
+
+    @Test
+    void testDeleteUserWhenFindByIdReturnsUserSuccess() {
         User user = User.builder()
                 .id(1L)
                 .username("user123")
@@ -211,4 +359,23 @@ public class UserControllerTests {
         }
     }
 
+    @Test
+    void testDeleteUserWhenFindByIdReturnsEmpty() {
+        User existingUser = User.builder()
+                .id(1L)
+                .username("user123")
+                .password("password123")
+                .email("user@gmail.com")
+                .build();
+
+        Mockito.when(userRepository.findById(existingUser.getId())).thenReturn(Optional.empty());
+
+        try {
+            mockMvc.perform(MockMvcRequestBuilders.delete("/user/" + existingUser.getId())
+                            .contentType(MediaType.APPLICATION_JSON))
+                    .andExpect(status().isNotFound());
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

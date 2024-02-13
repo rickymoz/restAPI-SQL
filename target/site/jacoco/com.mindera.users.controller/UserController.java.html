@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 
 @RestController
@@ -16,38 +15,39 @@ public class UserController {
     private final UserService userService;
 
     @Autowired
-<span class="fc" id="L19">    public UserController(UserService userService) {</span>
-<span class="fc" id="L20">        this.userService = userService;</span>
-<span class="fc" id="L21">    }</span>
+<span class="fc" id="L18">    public UserController(UserService userService) {</span>
+<span class="fc" id="L19">        this.userService = userService;</span>
+<span class="fc" id="L20">    }</span>
 
     @GetMapping
     public List&lt;User&gt; getUsers() {
-<span class="fc" id="L25">        return userService.getUsers();</span>
+<span class="fc" id="L24">        return userService.getUsers();</span>
     }
 
     @PostMapping
     public User addUser(@RequestBody User user) {
-<span class="fc" id="L30">        return userService.addUser(user);</span>
+<span class="fc" id="L29">        return userService.addUser(user);</span>
     }
 
     @GetMapping(&quot;/{userId}&quot;)
     public Optional&lt;User&gt; getUserById(@PathVariable Long userId) {
-<span class="nc" id="L35">        return userService.getUserById(userId);</span>
+<span class="nc" id="L34">        return userService.getUserById(userId);</span>
     }
 
     @DeleteMapping(&quot;/{userId}&quot;)
     public void deleteUserById(@PathVariable Long userId) {
-<span class="fc" id="L40">        userService.deleteUserById(userId);</span>
-<span class="fc" id="L41">    }</span>
+<span class="fc" id="L39">        userService.deleteUserById(userId);</span>
+<span class="fc" id="L40">    }</span>
 
-    /*@PatchMapping(&quot;/{userId}&quot;)
-    public User patchUser(@PathVariable Long userId, @RequestBody Map&lt;String, String&gt; toUpdate) {
-        return userService.patchUser(userId, toUpdate);
-    }*/
+    @PatchMapping(&quot;/{userId}&quot;)
+    public User patchUser(@PathVariable Long userId, @RequestBody User updatedUser) {
+<span class="fc" id="L44">        return userService.patchUser(userId, updatedUser);</span>
+    }
 
-   @PutMapping(&quot;/{userId}&quot;)
-    public User putUser(@PathVariable Long userId, @RequestBody User toUpdate) {
-<span class="nc" id="L50">        return userService.putUser(userId, toUpdate);</span>
+
+    @PutMapping(&quot;/{userId}&quot;)
+    public User putUser(@PathVariable Long userId, @RequestBody User updatedUser) {
+<span class="nc" id="L50">        return userService.putUser(userId, updatedUser);</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>
