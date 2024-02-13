@@ -62,7 +62,7 @@ public class UserService {
 <span class="fc bfc" id="L62" title="All 2 branches covered.">        if(!userToUpdate.getEmail().equals(updatedUser.getEmail())) throw new UserCannotChangeException(&quot;User email cannot be updated!&quot;);</span>
 
 
-<span class="pc bpc" id="L65" title="1 of 6 branches missed.">        if (updatedUser.getUsername() != null &amp;&amp; !updatedUser.getUsername().isEmpty() &amp;&amp; !updatedUser.getUsername().isBlank()) {</span>
+<span class="pc bpc" id="L65" title="2 of 6 branches missed.">        if (updatedUser.getUsername() != null &amp;&amp; !updatedUser.getUsername().isEmpty() &amp;&amp; !updatedUser.getUsername().isBlank()) {</span>
 <span class="fc" id="L66">            userToUpdate.setUsername(updatedUser.getUsername());</span>
         }
 
