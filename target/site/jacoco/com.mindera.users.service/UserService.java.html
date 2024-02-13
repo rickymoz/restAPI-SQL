@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>UserService.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Users</a> &gt; <a href="index.source.html" class="el_package">com.mindera.users.service</a> &gt; <span class="el_source">UserService.java</span></div><h1>UserService.java</h1><pre class="source lang-java linenums">package com.mindera.users.service;
 
 import com.mindera.users.entity.User;
-import com.mindera.users.exceptions.CannotBeNullException;
+import com.mindera.users.exceptions.CannotBeEmptyOrNullException;
 import com.mindera.users.exceptions.NotMatchingException;
 import com.mindera.users.exceptions.UserCannotChangeException;
 import com.mindera.users.exceptions.UserNotFoundException;
@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 
 @Service
@@ -18,73 +17,83 @@ public class UserService {
     private final UserRepository userRepository;
 
     @Autowired
-<span class="fc" id="L21">    public UserService(UserRepository userRepository) {</span>
-<span class="fc" id="L22">        this.userRepository = userRepository;</span>
-<span class="fc" id="L23">    }</span>
+<span class="fc" id="L20">    public UserService(UserRepository userRepository) {</span>
+<span class="fc" id="L21">        this.userRepository = userRepository;</span>
+<span class="fc" id="L22">    }</span>
 
     public List&lt;User&gt; getUsers() {
-<span class="fc" id="L26">        return userRepository.findAll();</span>
+<span class="fc" id="L25">        return userRepository.findAll();</span>
     }
 
     public User addUser(User user) {
-<span class="pc bpc" id="L30" title="3 of 12 branches missed.">        if(user.getUsername().isEmpty() || user.getUsername().isBlank() || user.getPassword().isEmpty() || user.getPassword().isBlank() || user.getEmail().isEmpty() || user.getEmail().isBlank())</span>
-<span class="fc" id="L31">            throw new CannotBeNullException(&quot;User Id user name and user email cannot be null or empty&quot;);</span>
+<span class="fc bfc" id="L29" title="All 12 branches covered.">        if(user.getUsername().isEmpty() || user.getUsername().isBlank() || user.getPassword().isEmpty() || user.getPassword().isBlank() || user.getEmail().isEmpty() || user.getEmail().isBlank())</span>
+<span class="fc" id="L30">            throw new CannotBeEmptyOrNullException(&quot;User Id user name and user email cannot be null or empty&quot;);</span>
 
-<span class="fc" id="L33">        return userRepository.save(user);</span>
+<span class="fc" id="L32">        return userRepository.save(user);</span>
     }
 
     public Optional&lt;User&gt; getUserById(Long userId) {
-<span class="fc" id="L37">        Optional&lt;User&gt; userOptional = userRepository.findById(userId);</span>
+<span class="fc" id="L36">        Optional&lt;User&gt; userOptional = userRepository.findById(userId);</span>
 
-<span class="fc bfc" id="L39" title="All 2 branches covered.">        if (userOptional.isEmpty()) {</span>
-<span class="fc" id="L40">            throw new UserNotFoundException(&quot;User Id not found!&quot;);</span>
+<span class="fc bfc" id="L38" title="All 2 branches covered.">        if (userOptional.isEmpty()) {</span>
+<span class="fc" id="L39">            throw new UserNotFoundException(&quot;User Id not found!&quot;);</span>
         }
-<span class="fc" id="L42">        return userRepository.findById(userId);</span>
+<span class="fc" id="L41">        return userRepository.findById(userId);</span>
     }
 
     public void deleteUserById(Long userId) {
-<span class="fc" id="L46">        Optional&lt;User&gt; user = userRepository.findById(userId);</span>
-<span class="pc bpc" id="L47" title="1 of 2 branches missed.">        if (user.isEmpty()) throw new UserNotFoundException(&quot;User not found!&quot;);</span>
+<span class="fc" id="L45">        Optional&lt;User&gt; user = userRepository.findById(userId);</span>
+<span class="fc bfc" id="L46" title="All 2 branches covered.">        if (user.isEmpty()) throw new UserNotFoundException(&quot;User not found!&quot;);</span>
 
-<span class="fc" id="L49">        userRepository.deleteById(userId);</span>
-<span class="fc" id="L50">    }</span>
+<span class="fc" id="L48">        userRepository.deleteById(userId);</span>
+<span class="fc" id="L49">    }</span>
 
-    /*public User patchUser(Long userId, Map&lt;String, String&gt; toUpdate) {
-        Optional&lt;User&gt; updatedUserOptional = userRepository.findById(userId);
-        if (updatedUserOptional.isEmpty()) {
-            System.out.println(&quot;User not found!&quot;);
-            throw new UserNotFoundException(&quot;User not found!&quot;);
+    public User patchUser(Long userId, User updatedUser) {
+<span class="fc" id="L52">        Optional&lt;User&gt; existingUserOptional = userRepository.findById(userId);</span>
+
+<span class="fc bfc" id="L54" title="All 2 branches covered.">        if (existingUserOptional.isEmpty()) {</span>
+<span class="fc" id="L55">            throw new UserNotFoundException(&quot;User not found!&quot;);</span>
         }
 
-        User updatedUser = updatedUserOptional.get();
+<span class="fc" id="L58">        User userToUpdate = existingUserOptional.get();</span>
 
-        if (toUpdate.containsKey(&quot;username&quot;)) {
-            updatedUser.setUsername(toUpdate.get(&quot;username&quot;));
-        }
-        if (toUpdate.containsKey(&quot;password&quot;)) {
-            updatedUser.setPassword(toUpdate.get(&quot;password&quot;));
-        }
-        if (toUpdate.containsKey(&quot;email&quot;)) {
-            updatedUser.setEmail(toUpdate.get(&quot;email&quot;));
-        }
-        userRepository.save(updatedUser);
+<span class="fc bfc" id="L60" title="All 2 branches covered.">        if (!userToUpdate.getId().equals(updatedUser.getId())) throw new NotMatchingException(&quot;User id not matching body request&quot;);</span>
 
-        return updatedUser;
-    }*/
+<span class="fc bfc" id="L62" title="All 2 branches covered.">        if(!userToUpdate.getEmail().equals(updatedUser.getEmail())) throw new UserCannotChangeException(&quot;User email cannot be updated!&quot;);</span>
+
+
+<span class="pc bpc" id="L65" title="1 of 6 branches missed.">        if (updatedUser.getUsername() != null &amp;&amp; !updatedUser.getUsername().isEmpty() &amp;&amp; !updatedUser.getUsername().isBlank()) {</span>
+<span class="fc" id="L66">            userToUpdate.setUsername(updatedUser.getUsername());</span>
+        }
+
+<span class="pc bpc" id="L69" title="2 of 6 branches missed.">        if (updatedUser.getPassword() != null &amp;&amp; !updatedUser.getPassword().isEmpty() &amp;&amp; !updatedUser.getPassword().isBlank()) {</span>
+<span class="fc" id="L70">            userToUpdate.setPassword(updatedUser.getPassword());</span>
+        }
+
+<span class="pc bpc" id="L73" title="3 of 6 branches missed.">        if (updatedUser.getEmail() != null &amp;&amp; !updatedUser.getEmail().isEmpty() &amp;&amp; !updatedUser.getEmail().isBlank()) {</span>
+<span class="fc" id="L74">            userToUpdate.setEmail(updatedUser.getEmail());</span>
+        }
+
+<span class="fc" id="L77">        userRepository.save(userToUpdate);</span>
+
+<span class="fc" id="L79">        return userToUpdate;</span>
+    }
+
+
 
     public User putUser(Long userId, User user) {
-<span class="fc" id="L76">        Optional&lt;User&gt; updatedUserOptional = userRepository.findById(userId);</span>
-<span class="fc bfc" id="L77" title="All 2 branches covered.">        if(updatedUserOptional.isEmpty()) throw new UserNotFoundException(&quot;User not found!&quot;);</span>
+<span class="fc" id="L85">        Optional&lt;User&gt; updatedUserOptional = userRepository.findById(userId);</span>
+<span class="fc bfc" id="L86" title="All 2 branches covered.">        if(updatedUserOptional.isEmpty()) throw new UserNotFoundException(&quot;User not found!&quot;);</span>
 
-<span class="fc" id="L79">        User updatedUser = updatedUserOptional.get();</span>
-<span class="fc bfc" id="L80" title="All 2 branches covered.">        if(!updatedUser.getId().equals(user.getId())) throw new NotMatchingException(&quot;UserId and request body id do not match&quot;);</span>
-<span class="fc bfc" id="L81" title="All 2 branches covered.">        if(!updatedUser.getEmail().equals(user.getEmail())) throw new UserCannotChangeException(&quot;User email cannot be updated!&quot;);</span>
-<span class="fc" id="L82">        updatedUser.setUsername(user.getUsername());</span>
-<span class="fc" id="L83">        updatedUser.setPassword(user.getPassword());</span>
-<span class="fc" id="L84">        updatedUser.setEmail(user.getEmail());</span>
-<span class="fc" id="L85">        userRepository.save(updatedUser);</span>
+<span class="fc" id="L88">        User updatedUser = updatedUserOptional.get();</span>
+<span class="fc bfc" id="L89" title="All 2 branches covered.">        if(!updatedUser.getId().equals(user.getId())) throw new NotMatchingException(&quot;UserId and request body id do not match&quot;);</span>
+<span class="fc bfc" id="L90" title="All 2 branches covered.">        if(!updatedUser.getEmail().equals(user.getEmail())) throw new UserCannotChangeException(&quot;User email cannot be updated!&quot;);</span>
+<span class="fc" id="L91">        updatedUser.setUsername(user.getUsername());</span>
+<span class="fc" id="L92">        updatedUser.setPassword(user.getPassword());</span>
+<span class="fc" id="L93">        updatedUser.setEmail(user.getEmail());</span>
+<span class="fc" id="L94">        userRepository.save(updatedUser);</span>
 
-<span class="fc" id="L87">        return updatedUser;</span>
+<span class="fc" id="L96">        return updatedUser;</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

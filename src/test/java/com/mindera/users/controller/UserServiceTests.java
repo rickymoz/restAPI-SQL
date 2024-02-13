@@ -1,7 +1,7 @@
 package com.mindera.users.controller;
 
 import com.mindera.users.entity.User;
-import com.mindera.users.exceptions.CannotBeNullException;
+import com.mindera.users.exceptions.CannotBeEmptyOrNullException;
 import com.mindera.users.exceptions.UserCannotChangeException;
 import com.mindera.users.exceptions.UserNotFoundException;
 import com.mindera.users.repository.UserRepository;
@@ -11,12 +11,15 @@ import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.http.MediaType;
+import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @SpringBootTest
 class UserServiceTest {
@@ -43,15 +46,66 @@ class UserServiceTest {
     }
 
     @Test
-    public void testAddUserWithEmptyUsernameThrowsCannotBeNullException() {
-        User user = User.builder()
+    public void testAddUserWithEmptyOrNullFieldsThrowsCannotBeEmptyOrNullException() {
+        // username > empty
+        User user1 = User.builder()
                 .id(1L)
                 .username("")
                 .password("password123")
                 .email("user@gmail.com")
                 .build();
 
-        Assertions.assertThrows(CannotBeNullException.class, () -> userService.addUser(user));
+        Assertions.assertThrows(CannotBeEmptyOrNullException.class, () -> userService.addUser(user1));
+
+        // username > blank
+        User user2 = User.builder()
+                .id(1L)
+                .username(" ")
+                .password("password123")
+                .email("user@gmail.com")
+                .build();
+
+        Assertions.assertThrows(CannotBeEmptyOrNullException.class, () -> userService.addUser(user2));
+
+        // password > empty
+        User user3 = User.builder()
+                .id(3L)
+                .username("user123")
+                .password("")
+                .email("user@gmail.com")
+                .build();
+
+        Assertions.assertThrows(CannotBeEmptyOrNullException.class, () -> userService.addUser(user3));
+
+        // password > blank
+        User user4 = User.builder()
+                .id(4L)
+                .username("user123")
+                .password(" ")
+                .email("user@gmail.com")
+                .build();
+
+        Assertions.assertThrows(CannotBeEmptyOrNullException.class, () -> userService.addUser(user4));
+
+        // email > empty
+        User user5 = User.builder()
+                .id(3L)
+                .username("user123")
+                .password("password123")
+                .email("")
+                .build();
+
+        Assertions.assertThrows(CannotBeEmptyOrNullException.class, () -> userService.addUser(user5));
+
+        // email > blank
+        User user6 = User.builder()
+                .id(4L)
+                .username("user123")
+                .password("password123")
+                .email(" ")
+                .build();
+
+        Assertions.assertThrows(CannotBeEmptyOrNullException.class, () -> userService.addUser(user6));
     }
 
     @Test
@@ -63,7 +117,7 @@ class UserServiceTest {
                 .email("user@gmail.com")
                 .build();
 
-        Assertions.assertThrows(CannotBeNullException.class, () -> userService.addUser(user));
+        Assertions.assertThrows(CannotBeEmptyOrNullException.class, () -> userService.addUser(user));
     }
 
     @Test
@@ -75,7 +129,7 @@ class UserServiceTest {
                 .email("")
                 .build();
 
-        Assertions.assertThrows(CannotBeNullException.class, () -> userService.addUser(user));
+        Assertions.assertThrows(CannotBeEmptyOrNullException.class, () -> userService.addUser(user));
     }
 
     @Test
@@ -160,4 +214,27 @@ class UserServiceTest {
 
         Assertions.assertThrows(UserCannotChangeException.class, () -> userService.putUser(user.getId(), updatedUser));
     }
+
+
+    @Test
+    public void testPatchUserWithDifferentEmailThrowsUserCannotChangeException() {
+        User user = User.builder()
+                .id(1L)
+                .username("user123")
+                .password("password123")
+                .email("user@gmail.com")
+                .build();
+
+        when(userRepository.findById(user.getId())).thenReturn(Optional.of(user));
+
+        User updatedUser = User.builder()
+                .id(1L)
+                .email("updatedUser@gmail.com")
+                .build();
+
+        Assertions.assertThrows(UserCannotChangeException.class, () -> userService.patchUser(user.getId(), updatedUser));
+
+    }
+
+
 }

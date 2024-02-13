@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 
 @RestController
@@ -40,13 +39,14 @@ public class UserController {
         userService.deleteUserById(userId);
     }
 
-    /*@PatchMapping("/{userId}")
-    public User patchUser(@PathVariable Long userId, @RequestBody Map<String, String> toUpdate) {
-        return userService.patchUser(userId, toUpdate);
-    }*/
+    @PatchMapping("/{userId}")
+    public User patchUser(@PathVariable Long userId, @RequestBody User updatedUser) {
+        return userService.patchUser(userId, updatedUser);
+    }
 
-   @PutMapping("/{userId}")
-    public User putUser(@PathVariable Long userId, @RequestBody User toUpdate) {
-        return userService.putUser(userId, toUpdate);
+
+    @PutMapping("/{userId}")
+    public User putUser(@PathVariable Long userId, @RequestBody User updatedUser) {
+        return userService.putUser(userId, updatedUser);
     }
 }
