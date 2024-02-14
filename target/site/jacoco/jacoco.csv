@@ -3,8 +3,9 @@ Users,com.mindera.users,UsersApplication,5,3,0,0,2,1,1,1,1,1
 Users,com.mindera.users.exceptions,NotMatchingException,0,4,0,0,0,2,0,1,0,1
 Users,com.mindera.users.exceptions,UserCannotChangeException,0,4,0,0,0,2,0,1,0,1
 Users,com.mindera.users.exceptions,UserNotFoundException,0,4,0,0,0,2,0,1,0,1
+Users,com.mindera.users.exceptions,UserAlreadyExistsException,0,4,0,0,0,2,0,1,0,1
 Users,com.mindera.users.exceptions,CannotBeEmptyOrNullException,0,4,0,0,0,2,0,1,0,1
-Users,com.mindera.users.service,UserService,0,230,7,39,0,39,7,23,0,7
-Users,com.mindera.users.controller,UserController,11,26,0,0,2,8,2,5,2,5
+Users,com.mindera.users.service,UserService,0,246,7,41,0,44,7,24,0,7
+Users,com.mindera.users.controller,UserController,5,32,0,0,1,9,1,6,1,6
 Users,com.mindera.users.entity,User.UserBuilder,10,35,0,0,0,1,1,6,1,6
 Users,com.mindera.users.entity,User,98,116,27,11,0,8,21,13,2,13

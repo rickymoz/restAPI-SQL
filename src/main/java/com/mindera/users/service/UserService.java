@@ -1,10 +1,7 @@
 package com.mindera.users.service;
 
 import com.mindera.users.entity.User;
-import com.mindera.users.exceptions.CannotBeEmptyOrNullException;
-import com.mindera.users.exceptions.NotMatchingException;
-import com.mindera.users.exceptions.UserCannotChangeException;
-import com.mindera.users.exceptions.UserNotFoundException;
+import com.mindera.users.exceptions.*;
 import com.mindera.users.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,11 +23,22 @@ public class UserService {
     }
 
     public User addUser(User user) {
-        if(user.getUsername().isEmpty() || user.getUsername().isBlank() || user.getPassword().isEmpty() || user.getPassword().isBlank() || user.getEmail().isEmpty() || user.getEmail().isBlank())
-            throw new CannotBeEmptyOrNullException("User Id user name and user email cannot be null or empty");
+        if (user.getEmail().isEmpty() || user.getEmail().isBlank()) {
+            throw new CannotBeEmptyOrNullException("User email cannot be null or empty");
+        }
+
+        Optional<User> existingUser = userRepository.findByEmail(user.getEmail());
+        if (existingUser.isPresent()) {
+            throw new UserAlreadyExistsException("User with the same email already exists");
+        }
+
+        if (user.getUsername().isEmpty() || user.getUsername().isBlank() || user.getPassword().isEmpty() || user.getPassword().isBlank()) {
+            throw new CannotBeEmptyOrNullException("User ID, username, and password cannot be null or empty");
+        }
 
         return userRepository.save(user);
     }
+
 
     public Optional<User> getUserById(Long userId) {
         Optional<User> userOptional = userRepository.findById(userId);
@@ -38,12 +46,13 @@ public class UserService {
         if (userOptional.isEmpty()) {
             throw new UserNotFoundException("User Id not found!");
         }
-        return userRepository.findById(userId);
+        return userOptional;
     }
 
+
     public void deleteUserById(Long userId) {
-        Optional<User> user = userRepository.findById(userId);
-        if (user.isEmpty()) throw new UserNotFoundException("User not found!");
+        Optional<User> userOptional = userRepository.findById(userId);
+        if (userOptional.isEmpty()) throw new UserNotFoundException("User not found!");
 
         userRepository.deleteById(userId);
     }
