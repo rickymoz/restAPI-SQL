@@ -173,35 +173,47 @@ public class UserControllerTests {
 
     @Test
     void testGetAllUsers() throws Exception {
+        List<User> users = Arrays.asList(
+                new User(1L, "user123", "password123", "user@gmail.com"),
+                new User(2L, "user456", "password456", "user456@gmail.com")
+        );
+
+        Mockito.when(userRepository.findAll()).thenReturn(users);
+
         mockMvc.perform(MockMvcRequestBuilders.get("/user"))
                 .andExpect(status().isOk());
     }
 
 
+
     // If user updates successfully -> HttpStatus.OK
     @Test
     void testPutUserWhenFindByIdReturnsUserThrowsOk() throws Exception {
-        User user = new User(1L, "user123", "password123", "user@gmail.com");
+        User existingUser = new User(1L, "user123", "password123", "user@gmail.com");
 
-        Mockito.when(userRepository.findById(user.getId())).thenReturn(Optional.of(user));
+        Mockito.when(userRepository.findById(existingUser.getId())).thenReturn(Optional.of(existingUser));
+
+        User updatedUser = new User(1L, "updatedUser", "password123", "user@gmail.com");
 
         mockMvc.perform(MockMvcRequestBuilders.put("/user/1")
                         .contentType(MediaType.APPLICATION_JSON)
-                        .content(mapper.writeValueAsString(USER_1)))
-                .andExpect(status().isBadRequest());
+                        .content(mapper.writeValueAsString(updatedUser)))
+                .andExpect(status().isOk());
     }
 
 
     // If userId does not match user.getUserId-> HttpStatus.BAD_REQUEST -> "UserId and request body id do not match"
     @Test
     void testPutUserWhenUserIdDoesNotMatchReturnsUserThrowsNotMatchingException() throws Exception {
-        User user = new User(1L, "user123", "password123", "user@gmail.com");
+        User existingUser = new User(1L, "user123", "password123", "user@gmail.com");
 
-        Mockito.when(userRepository.findById(user.getId())).thenReturn(Optional.of(user));
+        Mockito.when(userRepository.findById(existingUser.getId())).thenReturn(Optional.of(existingUser));
+
+        User updatedUser = new User(2L, "updatedUser", "password123", "updatedUser@gmail.com");
 
         mockMvc.perform(MockMvcRequestBuilders.put("/user/1")
                         .contentType(MediaType.APPLICATION_JSON)
-                        .content(mapper.writeValueAsString(USER_1)))
+                        .content(mapper.writeValueAsString(updatedUser)))
                 .andExpect(status().isBadRequest());
     }
 

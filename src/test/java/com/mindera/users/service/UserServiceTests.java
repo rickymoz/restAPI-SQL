@@ -1,7 +1,8 @@
-package com.mindera.users.controller;
+package com.mindera.users.service;
 
 import com.mindera.users.entity.User;
 import com.mindera.users.exceptions.CannotBeEmptyOrNullException;
+import com.mindera.users.exceptions.UserAlreadyExistsException;
 import com.mindera.users.exceptions.UserCannotChangeException;
 import com.mindera.users.exceptions.UserNotFoundException;
 import com.mindera.users.repository.UserRepository;
@@ -11,18 +12,15 @@ import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.http.MediaType;
-import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.when;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.mockito.Mockito.*;
 
 @SpringBootTest
-class UserServiceTest {
+class UserServiceTests {
 
     @Mock
     private UserRepository userRepository;
@@ -43,6 +41,8 @@ class UserServiceTest {
         User createdUser = userService.addUser(user);
 
         Assertions.assertNotNull(createdUser);
+        assertEquals("user123", createdUser.getUsername());
+        verify(userRepository, times(1)).save(user);
     }
 
     @Test
@@ -109,27 +109,12 @@ class UserServiceTest {
     }
 
     @Test
-    public void testAddUserWithEmptyPasswordThrowsCannotBeNullException() {
-        User user = User.builder()
-                .id(1L)
-                .username("user123")
-                .password("")
-                .email("user@gmail.com")
-                .build();
+    void testAddUserWithExistingEmail() {
+        User existingUser = new User(2L, "existingUser", "password456", "existingUser@gmail.com");
 
-        Assertions.assertThrows(CannotBeEmptyOrNullException.class, () -> userService.addUser(user));
-    }
+        when(userRepository.findByEmail(existingUser.getEmail())).thenReturn(Optional.of(existingUser));
 
-    @Test
-    public void testAddUserWithEmptyEmailThrowsCannotBeNullException() {
-        User user = User.builder()
-                .id(1L)
-                .username("user123")
-                .password("password123")
-                .email("")
-                .build();
-
-        Assertions.assertThrows(CannotBeEmptyOrNullException.class, () -> userService.addUser(user));
+        Assertions.assertThrows(UserAlreadyExistsException.class, () -> userService.addUser(existingUser));
     }
 
     @Test
@@ -144,7 +129,9 @@ class UserServiceTest {
         when(userRepository.findById(user.getId())).thenReturn(Optional.of(user));
         Optional<User> retrievedUser = userService.getUserById(user.getId());
 
+        Assertions.assertTrue(retrievedUser.isPresent());
         Assertions.assertNotNull(retrievedUser);
+        verify(userRepository, times(1)).findById(user.getId());
     }
 
     @Test
@@ -155,8 +142,15 @@ class UserServiceTest {
                 .email("user@gmail.com")
                 .build();
 
-        Assertions.assertThrows(UserNotFoundException.class, () -> userService.getUserById(user.getId()));
+        when(userRepository.findById(user.getId())).thenReturn(Optional.empty());
+
+        Assertions.assertThrows(UserNotFoundException.class, () -> {
+            userService.getUserById(user.getId());
+
+            verify(userRepository, times(1)).findById(user.getId());
+        });
     }
+
 
     @Test
     public void testPutUserWhenFindById() {
@@ -177,10 +171,16 @@ class UserServiceTest {
                 .build();
 
         userService.putUser(user.getId(), updatedUser);
+
         assertEquals("user", user.getUsername());
         assertEquals("password123", user.getPassword());
         assertEquals("user@gmail.com", user.getEmail());
+
+        verify(userRepository, times(1)).findById(user.getId());
+
+        verify(userRepository, times(1)).save(updatedUser);
     }
+
 
     @Test
     public void testPutUserReturnsNullThrowsUserNotFoundException() {
@@ -191,7 +191,15 @@ class UserServiceTest {
                 .email("user@gmail.com")
                 .build();
 
-        Assertions.assertThrows(UserNotFoundException.class, () -> userService.putUser(user.getId(), user));
+        when(userRepository.findById(user.getId())).thenReturn(Optional.empty());
+
+        Assertions.assertThrows(UserNotFoundException.class, () -> {
+            userService.putUser(user.getId(), user);
+
+            verify(userRepository, times(1)).findById(user.getId());
+
+            verify(userRepository, times(0)).save(any(User.class));
+        });
     }
 
     @Test
@@ -212,7 +220,13 @@ class UserServiceTest {
                 .email("updatedUser@gmail.com")
                 .build();
 
-        Assertions.assertThrows(UserCannotChangeException.class, () -> userService.putUser(user.getId(), updatedUser));
+        Assertions.assertThrows(UserCannotChangeException.class, () -> {
+            userService.putUser(user.getId(), updatedUser);
+
+            verify(userRepository, times(1)).findById(user.getId());
+
+            verify(userRepository, times(0)).save(any(User.class));
+        });
     }
 
 
@@ -232,9 +246,13 @@ class UserServiceTest {
                 .email("updatedUser@gmail.com")
                 .build();
 
-        Assertions.assertThrows(UserCannotChangeException.class, () -> userService.patchUser(user.getId(), updatedUser));
+        Assertions.assertThrows(UserCannotChangeException.class, () -> {
+            userService.patchUser(user.getId(), updatedUser);
 
+            verify(userRepository, times(1)).findById(user.getId());
+
+            verify(userRepository, times(0)).save(any(User.class));
+        });
     }
-
 
 }

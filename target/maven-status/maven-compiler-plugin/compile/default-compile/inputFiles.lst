@@ -6,4 +6,5 @@
 /Users/mindera/Desktop/restAPI-SQL/src/main/java/com/mindera/users/exceptions/UserCannotChangeException.java
 /Users/mindera/Desktop/restAPI-SQL/src/main/java/com/mindera/users/UsersApplication.java
 /Users/mindera/Desktop/restAPI-SQL/src/main/java/com/mindera/users/exceptions/UserNotFoundException.java
+/Users/mindera/Desktop/restAPI-SQL/src/main/java/com/mindera/users/exceptions/UserAlreadyExistsException.java
 /Users/mindera/Desktop/restAPI-SQL/src/main/java/com/mindera/users/exceptions/NotMatchingException.java
