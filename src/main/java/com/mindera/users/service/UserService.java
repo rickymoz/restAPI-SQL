@@ -23,8 +23,8 @@ public class UserService {
     }
 
     public User addUser(User user) {
-        if (user.getEmail().isEmpty() || user.getEmail().isBlank()) {
-            throw new CannotBeEmptyOrNullException("User email cannot be null or empty");
+        if (user == null) {
+            throw new UserCannotBeNullException("User cannot be null");
         }
 
         Optional<User> existingUser = userRepository.findByEmail(user.getEmail());
@@ -32,12 +32,14 @@ public class UserService {
             throw new UserAlreadyExistsException("User with the same email already exists");
         }
 
-        if (user.getUsername().isEmpty() || user.getUsername().isBlank() || user.getPassword().isEmpty() || user.getPassword().isBlank()) {
-            throw new CannotBeEmptyOrNullException("User ID, username, and password cannot be null or empty");
+        if (user.getUsername() == null || user.getUsername().isEmpty() || user.getUsername().isBlank() ||
+                user.getPassword() == null || user.getPassword().isEmpty() || user.getPassword().isBlank() || user.getEmail() == null || user.getEmail().isEmpty() || user.getEmail().isBlank()) {
+            throw new UserPropertiesNullEmptyOrBlankException("User ID, username, password and email cannot be null, empty or blank!");
         }
 
         return userRepository.save(user);
     }
+
 
 
     public Optional<User> getUserById(Long userId) {

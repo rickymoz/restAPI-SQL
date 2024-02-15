@@ -89,6 +89,13 @@ public class UserControllerTests {
     // If ID, username, password or email null or empty -> HttpStatus.BAD_REQUEST -> "User ID username, password and user email cannot be null or empty"
     @Test
     void testPostUserWithEmptyOrNullFieldsThrowsCannotBeEmptyOrNullException() throws Exception {
+
+        // user > null
+        mockMvc.perform(MockMvcRequestBuilders.post("/user")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(mapper.writeValueAsString(null)))
+                .andExpect(status().isBadRequest());
+
         // username > empty
         User user1 = User.builder()
                 .id(1L)
