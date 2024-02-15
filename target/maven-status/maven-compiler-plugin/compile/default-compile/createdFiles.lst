@@ -1,4 +1,5 @@
 com/mindera/users/exceptions/UserCannotChangeException.class
+com/mindera/users/exceptions/UserCannotBeNullException.class
 com/mindera/users/exceptions/UserNotFoundException.class
 com/mindera/users/exceptions/NotMatchingException.class
 com/mindera/users/entity/User$UserBuilder.class
@@ -6,6 +7,6 @@ com/mindera/users/entity/User.class
 com/mindera/users/controller/UserController.class
 com/mindera/users/exceptions/UserAlreadyExistsException.class
 com/mindera/users/repository/UserRepository.class
-com/mindera/users/exceptions/CannotBeEmptyOrNullException.class
 com/mindera/users/service/UserService.class
+com/mindera/users/exceptions/UserPropertiesNullEmptyOrBlankException.class
 com/mindera/users/UsersApplication.class

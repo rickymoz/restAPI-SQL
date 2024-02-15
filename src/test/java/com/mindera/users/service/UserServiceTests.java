@@ -1,12 +1,8 @@
 package com.mindera.users.service;
 
 import com.mindera.users.entity.User;
-import com.mindera.users.exceptions.CannotBeEmptyOrNullException;
-import com.mindera.users.exceptions.UserAlreadyExistsException;
-import com.mindera.users.exceptions.UserCannotChangeException;
-import com.mindera.users.exceptions.UserNotFoundException;
+import com.mindera.users.exceptions.*;
 import com.mindera.users.repository.UserRepository;
-import com.mindera.users.service.UserService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -45,67 +41,102 @@ class UserServiceTests {
         verify(userRepository, times(1)).save(user);
     }
 
+
     @Test
     public void testAddUserWithEmptyOrNullFieldsThrowsCannotBeEmptyOrNullException() {
-        // username > empty
+
+        // user > null
+        Assertions.assertThrows(UserCannotBeNullException.class, () -> userService.addUser(null));
+
+        // username > null
         User user1 = User.builder()
+                .id(1L)
+                .username(null)
+                .password("password123")
+                .email("user@gmail.com")
+                .build();
+
+        Assertions.assertThrows(UserPropertiesNullEmptyOrBlankException.class, () -> userService.addUser(user1));
+
+        // username > empty
+        User user2 = User.builder()
                 .id(1L)
                 .username("")
                 .password("password123")
                 .email("user@gmail.com")
                 .build();
 
-        Assertions.assertThrows(CannotBeEmptyOrNullException.class, () -> userService.addUser(user1));
+        Assertions.assertThrows(UserPropertiesNullEmptyOrBlankException.class, () -> userService.addUser(user2));
 
         // username > blank
-        User user2 = User.builder()
+        User user3 = User.builder()
                 .id(1L)
                 .username(" ")
                 .password("password123")
                 .email("user@gmail.com")
                 .build();
 
-        Assertions.assertThrows(CannotBeEmptyOrNullException.class, () -> userService.addUser(user2));
+        Assertions.assertThrows(UserPropertiesNullEmptyOrBlankException.class, () -> userService.addUser(user3));
+
+        // password > null
+        User user4 = User.builder()
+                .id(3L)
+                .username("user123")
+                .password(null)
+                .email("user@gmail.com")
+                .build();
+
+        Assertions.assertThrows(UserPropertiesNullEmptyOrBlankException.class, () -> userService.addUser(user4));
 
         // password > empty
-        User user3 = User.builder()
+        User user5 = User.builder()
                 .id(3L)
                 .username("user123")
                 .password("")
                 .email("user@gmail.com")
                 .build();
 
-        Assertions.assertThrows(CannotBeEmptyOrNullException.class, () -> userService.addUser(user3));
+        Assertions.assertThrows(UserPropertiesNullEmptyOrBlankException.class, () -> userService.addUser(user5));
 
         // password > blank
-        User user4 = User.builder()
+        User user6 = User.builder()
                 .id(4L)
                 .username("user123")
                 .password(" ")
                 .email("user@gmail.com")
                 .build();
 
-        Assertions.assertThrows(CannotBeEmptyOrNullException.class, () -> userService.addUser(user4));
+        Assertions.assertThrows(UserPropertiesNullEmptyOrBlankException.class, () -> userService.addUser(user6));
+
+        // email > null
+        User user7 = User.builder()
+                .id(3L)
+                .username("user123")
+                .password("password123")
+                .email(null)
+                .build();
+
+        Assertions.assertThrows(UserPropertiesNullEmptyOrBlankException.class, () -> userService.addUser(user7));
 
         // email > empty
-        User user5 = User.builder()
+        User user8 = User.builder()
                 .id(3L)
                 .username("user123")
                 .password("password123")
                 .email("")
                 .build();
 
-        Assertions.assertThrows(CannotBeEmptyOrNullException.class, () -> userService.addUser(user5));
+        Assertions.assertThrows(UserPropertiesNullEmptyOrBlankException.class, () -> userService.addUser(user8));
 
         // email > blank
-        User user6 = User.builder()
+        User user9 = User.builder()
                 .id(4L)
                 .username("user123")
                 .password("password123")
                 .email(" ")
                 .build();
 
-        Assertions.assertThrows(CannotBeEmptyOrNullException.class, () -> userService.addUser(user6));
+        Assertions.assertThrows(UserPropertiesNullEmptyOrBlankException.class, () -> userService.addUser(user9));
     }
 
     @Test

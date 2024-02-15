@@ -1,10 +1,11 @@
 /Users/mindera/Desktop/restAPI-SQL/src/main/java/com/mindera/users/repository/UserRepository.java
 /Users/mindera/Desktop/restAPI-SQL/src/main/java/com/mindera/users/entity/User.java
-/Users/mindera/Desktop/restAPI-SQL/src/main/java/com/mindera/users/exceptions/CannotBeEmptyOrNullException.java
 /Users/mindera/Desktop/restAPI-SQL/src/main/java/com/mindera/users/service/UserService.java
 /Users/mindera/Desktop/restAPI-SQL/src/main/java/com/mindera/users/controller/UserController.java
+/Users/mindera/Desktop/restAPI-SQL/src/main/java/com/mindera/users/exceptions/UserPropertiesNullEmptyOrBlankException.java
 /Users/mindera/Desktop/restAPI-SQL/src/main/java/com/mindera/users/exceptions/UserCannotChangeException.java
 /Users/mindera/Desktop/restAPI-SQL/src/main/java/com/mindera/users/UsersApplication.java
 /Users/mindera/Desktop/restAPI-SQL/src/main/java/com/mindera/users/exceptions/UserNotFoundException.java
 /Users/mindera/Desktop/restAPI-SQL/src/main/java/com/mindera/users/exceptions/UserAlreadyExistsException.java
+/Users/mindera/Desktop/restAPI-SQL/src/main/java/com/mindera/users/exceptions/UserCannotBeNullException.java
 /Users/mindera/Desktop/restAPI-SQL/src/main/java/com/mindera/users/exceptions/NotMatchingException.java

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.mindera.users.controller.UserControllerTests" time="4.096" tests="13" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.mindera.users.controller.UserControllerTests" time="4.337" tests="13" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="21"/>
     <property name="sun.jnu.encoding" value="UTF-8"/>
@@ -14,7 +14,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="PT"/>
     <property name="sun.boot.library.path" value="/usr/local/Cellar/openjdk/21.0.2/libexec/openjdk.jdk/Contents/Home/lib"/>
-    <property name="sun.java.command" value="/Users/mindera/Desktop/restAPI-SQL/target/surefire/surefirebooter-20240214193923390_3.jar /Users/mindera/Desktop/restAPI-SQL/target/surefire 2024-02-14T19-39-23_293-jvmRun1 surefire-20240214193923390_1tmp surefire_0-20240214193923390_2tmp"/>
+    <property name="sun.java.command" value="/Users/mindera/Desktop/restAPI-SQL/target/surefire/surefirebooter-20240215085015620_3.jar /Users/mindera/Desktop/restAPI-SQL/target/surefire 2024-02-15T08-50-15_500-jvmRun1 surefire-20240215085015620_1tmp surefire_0-20240215085015620_2tmp"/>
     <property name="http.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="/Users/mindera/Desktop/restAPI-SQL/target/test-classes:/Users/mindera/Desktop/restAPI-SQL/target/classes:/Users/mindera/.m2/repository/org/springframework/boot/spring-boot-starter-data-jpa/3.1.7/spring-boot-starter-data-jpa-3.1.7.jar:/Users/mindera/.m2/repository/org/springframework/boot/spring-boot-starter-aop/3.1.7/spring-boot-starter-aop-3.1.7.jar:/Users/mindera/.m2/repository/org/aspectj/aspectjweaver/1.9.21/aspectjweaver-1.9.21.jar:/Users/mindera/.m2/repository/org/springframework/boot/spring-boot-starter-jdbc/3.1.7/spring-boot-starter-jdbc-3.1.7.jar:/Users/mindera/.m2/repository/com/zaxxer/HikariCP/5.0.1/HikariCP-5.0.1.jar:/Users/mindera/.m2/repository/org/springframework/spring-jdbc/6.0.15/spring-jdbc-6.0.15.jar:/Users/mindera/.m2/repository/org/hibernate/orm/hibernate-core/6.2.17.Final/hibernate-core-6.2.17.Final.jar:/Users/mindera/.m2/repository/jakarta/persistence/jakarta.persistence-api/3.1.0/jakarta.persistence-api-3.1.0.jar:/Users/mindera/.m2/repository/jakarta/transaction/jakarta.transaction-api/2.0.1/jakarta.transaction-api-2.0.1.jar:/Users/mindera/.m2/repository/org/jboss/logging/jboss-logging/3.5.3.Final/jboss-logging-3.5.3.Final.jar:/Users/mindera/.m2/repository/org/hibernate/common/hibernate-commons-annotations/6.0.6.Final/hibernate-commons-annotations-6.0.6.Final.jar:/Users/mindera/.m2/repository/io/smallrye/jandex/3.0.5/jandex-3.0.5.jar:/Users/mindera/.m2/repository/com/fasterxml/classmate/1.5.1/classmate-1.5.1.jar:/Users/mindera/.m2/repository/net/bytebuddy/byte-buddy/1.14.10/byte-buddy-1.14.10.jar:/Users/mindera/.m2/repository/org/glassfish/jaxb/jaxb-runtime/4.0.4/jaxb-runtime-4.0.4.jar:/Users/mindera/.m2/repository/org/glassfish/jaxb/jaxb-core/4.0.4/jaxb-core-4.0.4.jar:/Users/mindera/.m2/repository/org/eclipse/angus/angus-activation/2.0.1/angus-activation-2.0.1.jar:/Users/mindera/.m2/repository/org/glassfish/jaxb/txw2/4.0.4/txw2-4.0.4.jar:/Users/mindera/.m2/repository/com/sun/istack/istack-commons-runtime/4.1.2/istack-commons-runtime-4.1.2.jar:/Users/mindera/.m2/repository/jakarta/inject/jakarta.inject-api/2.0.1/jakarta.inject-api-2.0.1.jar:/Users/mindera/.m2/repository/org/antlr/antlr4-runtime/4.10.1/antlr4-runtime-4.10.1.jar:/Users/mindera/.m2/repository/org/springframework/data/spring-data-jpa/3.1.7/spring-data-jpa-3.1.7.jar:/Users/mindera/.m2/repository/org/springframework/data/spring-data-commons/3.1.7/spring-data-commons-3.1.7.jar:/Users/mindera/.m2/repository/org/springframework/spring-orm/6.0.15/spring-orm-6.0.15.jar:/Users/mindera/.m2/repository/org/springframework/spring-context/6.0.15/spring-context-6.0.15.jar:/Users/mindera/.m2/repository/org/springframework/spring-tx/6.0.15/spring-tx-6.0.15.jar:/Users/mindera/.m2/repository/org/springframework/spring-beans/6.0.15/spring-beans-6.0.15.jar:/Users/mindera/.m2/repository/jakarta/annotation/jakarta.annotation-api/2.1.1/jakarta.annotation-api-2.1.1.jar:/Users/mindera/.m2/repository/org/slf4j/slf4j-api/2.0.9/slf4j-api-2.0.9.jar:/Users/mindera/.m2/repository/org/springframework/spring-aspects/6.0.15/spring-aspects-6.0.15.jar:/Users/mindera/.m2/repository/org/springframework/boot/spring-boot-starter-web/3.1.7/spring-boot-starter-web-3.1.7.jar:/Users/mindera/.m2/repository/org/springframework/boot/spring-boot-starter/3.1.7/spring-boot-starter-3.1.7.jar:/Users/mindera/.m2/repository/org/springframework/boot/spring-boot/3.1.7/spring-boot-3.1.7.jar:/Users/mindera/.m2/repository/org/springframework/boot/spring-boot-autoconfigure/3.1.7/spring-boot-autoconfigure-3.1.7.jar:/Users/mindera/.m2/repository/org/springframework/boot/spring-boot-starter-logging/3.1.7/spring-boot-starter-logging-3.1.7.jar:/Users/mindera/.m2/repository/ch/qos/logback/logback-classic/1.4.14/logback-classic-1.4.14.jar:/Users/mindera/.m2/repository/ch/qos/logback/logback-core/1.4.14/logback-core-1.4.14.jar:/Users/mindera/.m2/repository/org/apache/logging/log4j/log4j-to-slf4j/2.20.0/log4j-to-slf4j-2.20.0.jar:/Users/mindera/.m2/repository/org/apache/logging/log4j/log4j-api/2.20.0/log4j-api-2.20.0.jar:/Users/mindera/.m2/repository/org/slf4j/jul-to-slf4j/2.0.9/jul-to-slf4j-2.0.9.jar:/Users/mindera/.m2/repository/org/yaml/snakeyaml/1.33/snakeyaml-1.33.jar:/Users/mindera/.m2/repository/org/springframework/boot/spring-boot-starter-json/3.1.7/spring-boot-starter-json-3.1.7.jar:/Users/mindera/.m2/repository/com/fasterxml/jackson/core/jackson-databind/2.15.3/jackson-databind-2.15.3.jar:/Users/mindera/.m2/repository/com/fasterxml/jackson/core/jackson-annotations/2.15.3/jackson-annotations-2.15.3.jar:/Users/mindera/.m2/repository/com/fasterxml/jackson/core/jackson-core/2.15.3/jackson-core-2.15.3.jar:/Users/mindera/.m2/repository/com/fasterxml/jackson/datatype/jackson-datatype-jdk8/2.15.3/jackson-datatype-jdk8-2.15.3.jar:/Users/mindera/.m2/repository/com/fasterxml/jackson/datatype/jackson-datatype-jsr310/2.15.3/jackson-datatype-jsr310-2.15.3.jar:/Users/mindera/.m2/repository/com/fasterxml/jackson/module/jackson-module-parameter-names/2.15.3/jackson-module-parameter-names-2.15.3.jar:/Users/mindera/.m2/repository/org/springframework/boot/spring-boot-starter-tomcat/3.1.7/spring-boot-starter-tomcat-3.1.7.jar:/Users/mindera/.m2/repository/org/apache/tomcat/embed/tomcat-embed-core/10.1.17/tomcat-embed-core-10.1.17.jar:/Users/mindera/.m2/repository/org/apache/tomcat/embed/tomcat-embed-el/10.1.17/tomcat-embed-el-10.1.17.jar:/Users/mindera/.m2/repository/org/apache/tomcat/embed/tomcat-embed-websocket/10.1.17/tomcat-embed-websocket-10.1.17.jar:/Users/mindera/.m2/repository/org/springframework/spring-web/6.0.15/spring-web-6.0.15.jar:/Users/mindera/.m2/repository/io/micrometer/micrometer-observation/1.11.7/micrometer-observation-1.11.7.jar:/Users/mindera/.m2/repository/io/micrometer/micrometer-commons/1.11.7/micrometer-commons-1.11.7.jar:/Users/mindera/.m2/repository/org/springframework/spring-webmvc/6.0.15/spring-webmvc-6.0.15.jar:/Users/mindera/.m2/repository/org/springframework/spring-expression/6.0.15/spring-expression-6.0.15.jar:/Users/mindera/.m2/repository/org/postgresql/postgresql/42.6.0/postgresql-42.6.0.jar:/Users/mindera/.m2/repository/org/checkerframework/checker-qual/3.31.0/checker-qual-3.31.0.jar:/Users/mindera/.m2/repository/org/springframework/boot/spring-boot-starter-test/3.1.7/spring-boot-starter-test-3.1.7.jar:/Users/mindera/.m2/repository/org/springframework/boot/spring-boot-test/3.1.7/spring-boot-test-3.1.7.jar:/Users/mindera/.m2/repository/org/springframework/boot/spring-boot-test-autoconfigure/3.1.7/spring-boot-test-autoconfigure-3.1.7.jar:/Users/mindera/.m2/repository/com/jayway/jsonpath/json-path/2.8.0/json-path-2.8.0.jar:/Users/mindera/.m2/repository/jakarta/xml/bind/jakarta.xml.bind-api/4.0.1/jakarta.xml.bind-api-4.0.1.jar:/Users/mindera/.m2/repository/jakarta/activation/jakarta.activation-api/2.1.2/jakarta.activation-api-2.1.2.jar:/Users/mindera/.m2/repository/net/minidev/json-smart/2.4.11/json-smart-2.4.11.jar:/Users/mindera/.m2/repository/net/minidev/accessors-smart/2.4.11/accessors-smart-2.4.11.jar:/Users/mindera/.m2/repository/org/ow2/asm/asm/9.3/asm-9.3.jar:/Users/mindera/.m2/repository/org/assertj/assertj-core/3.24.2/assertj-core-3.24.2.jar:/Users/mindera/.m2/repository/org/hamcrest/hamcrest/2.2/hamcrest-2.2.jar:/Users/mindera/.m2/repository/org/junit/jupiter/junit-jupiter/5.9.3/junit-jupiter-5.9.3.jar:/Users/mindera/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.9.3/junit-jupiter-api-5.9.3.jar:/Users/mindera/.m2/repository/org/opentest4j/opentest4j/1.2.0/opentest4j-1.2.0.jar:/Users/mindera/.m2/repository/org/junit/platform/junit-platform-commons/1.9.3/junit-platform-commons-1.9.3.jar:/Users/mindera/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar:/Users/mindera/.m2/repository/org/junit/jupiter/junit-jupiter-params/5.9.3/junit-jupiter-params-5.9.3.jar:/Users/mindera/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.9.3/junit-jupiter-engine-5.9.3.jar:/Users/mindera/.m2/repository/org/junit/platform/junit-platform-engine/1.9.3/junit-platform-engine-1.9.3.jar:/Users/mindera/.m2/repository/org/mockito/mockito-core/5.3.1/mockito-core-5.3.1.jar:/Users/mindera/.m2/repository/net/bytebuddy/byte-buddy-agent/1.14.10/byte-buddy-agent-1.14.10.jar:/Users/mindera/.m2/repository/org/objenesis/objenesis/3.3/objenesis-3.3.jar:/Users/mindera/.m2/repository/org/mockito/mockito-junit-jupiter/5.3.1/mockito-junit-jupiter-5.3.1.jar:/Users/mindera/.m2/repository/org/skyscreamer/jsonassert/1.5.1/jsonassert-1.5.1.jar:/Users/mindera/.m2/repository/com/vaadin/external/google/android-json/0.0.20131108.vaadin1/android-json-0.0.20131108.vaadin1.jar:/Users/mindera/.m2/repository/org/springframework/spring-core/6.0.15/spring-core-6.0.15.jar:/Users/mindera/.m2/repository/org/springframework/spring-jcl/6.0.15/spring-jcl-6.0.15.jar:/Users/mindera/.m2/repository/org/springframework/spring-test/6.0.15/spring-test-6.0.15.jar:/Users/mindera/.m2/repository/org/xmlunit/xmlunit-core/2.9.1/xmlunit-core-2.9.1.jar:/Users/mindera/.m2/repository/org/projectlombok/lombok/1.18.30/lombok-1.18.30.jar:/Users/mindera/.m2/repository/org/springdoc/springdoc-openapi-starter-webmvc-ui/2.3.0/springdoc-openapi-starter-webmvc-ui-2.3.0.jar:/Users/mindera/.m2/repository/org/springdoc/springdoc-openapi-starter-webmvc-api/2.3.0/springdoc-openapi-starter-webmvc-api-2.3.0.jar:/Users/mindera/.m2/repository/org/springdoc/springdoc-openapi-starter-common/2.3.0/springdoc-openapi-starter-common-2.3.0.jar:/Users/mindera/.m2/repository/io/swagger/core/v3/swagger-core-jakarta/2.2.19/swagger-core-jakarta-2.2.19.jar:/Users/mindera/.m2/repository/org/apache/commons/commons-lang3/3.12.0/commons-lang3-3.12.0.jar:/Users/mindera/.m2/repository/io/swagger/core/v3/swagger-annotations-jakarta/2.2.19/swagger-annotations-jakarta-2.2.19.jar:/Users/mindera/.m2/repository/io/swagger/core/v3/swagger-models-jakarta/2.2.19/swagger-models-jakarta-2.2.19.jar:/Users/mindera/.m2/repository/jakarta/validation/jakarta.validation-api/3.0.2/jakarta.validation-api-3.0.2.jar:/Users/mindera/.m2/repository/com/fasterxml/jackson/dataformat/jackson-dataformat-yaml/2.15.3/jackson-dataformat-yaml-2.15.3.jar:/Users/mindera/.m2/repository/org/webjars/swagger-ui/5.10.3/swagger-ui-5.10.3.jar:/Users/mindera/.m2/repository/org/sonarsource/scanner/maven/sonar-maven-plugin/3.10.0.2594/sonar-maven-plugin-3.10.0.2594.jar:/Users/mindera/.m2/repository/org/codehaus/plexus/plexus-sec-dispatcher/2.0/plexus-sec-dispatcher-2.0.jar:/Users/mindera/.m2/repository/org/codehaus/plexus/plexus-utils/3.4.1/plexus-utils-3.4.1.jar:/Users/mindera/.m2/repository/org/codehaus/plexus/plexus-cipher/2.0/plexus-cipher-2.0.jar:/Users/mindera/.m2/repository/javax/inject/javax.inject/1/javax.inject-1.jar:/Users/mindera/.m2/repository/org/sonarsource/scanner/api/sonar-scanner-api/2.16.3.1081/sonar-scanner-api-2.16.3.1081.jar:/Users/mindera/.m2/repository/commons-lang/commons-lang/2.6/commons-lang-2.6.jar:/Users/mindera/.m2/repository/org/springframework/boot/spring-boot-starter-security/3.1.7/spring-boot-starter-security-3.1.7.jar:/Users/mindera/.m2/repository/org/springframework/spring-aop/6.0.15/spring-aop-6.0.15.jar:/Users/mindera/.m2/repository/org/springframework/security/spring-security-config/6.1.6/spring-security-config-6.1.6.jar:/Users/mindera/.m2/repository/org/springframework/security/spring-security-core/6.1.6/spring-security-core-6.1.6.jar:/Users/mindera/.m2/repository/org/springframework/security/spring-security-crypto/6.1.6/spring-security-crypto-6.1.6.jar:/Users/mindera/.m2/repository/org/springframework/security/spring-security-web/6.1.6/spring-security-web-6.1.6.jar:"/>
@@ -33,7 +33,7 @@
     <property name="FILE_LOG_CHARSET" value="UTF-8"/>
     <property name="java.awt.headless" value="true"/>
     <property name="apple.awt.application.name" value="ForkedBooter"/>
-    <property name="surefire.real.class.path" value="/Users/mindera/Desktop/restAPI-SQL/target/surefire/surefirebooter-20240214193923390_3.jar"/>
+    <property name="surefire.real.class.path" value="/Users/mindera/Desktop/restAPI-SQL/target/surefire/surefirebooter-20240215085015620_3.jar"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="java.runtime.version" value="21.0.2"/>
@@ -53,7 +53,7 @@
     <property name="user.dir" value="/Users/mindera/Desktop/restAPI-SQL"/>
     <property name="os.arch" value="x86_64"/>
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
-    <property name="PID" value="46729"/>
+    <property name="PID" value="53000"/>
     <property name="CONSOLE_LOG_CHARSET" value="UTF-8"/>
     <property name="native.encoding" value="UTF-8"/>
     <property name="java.library.path" value="/Users/mindera/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:."/>
@@ -65,9 +65,9 @@
     <property name="socksNonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="java.class.version" value="65.0"/>
   </properties>
-  <testcase name="testPatchUserUserIdNotMatching" classname="com.mindera.users.controller.UserControllerTests" time="0.31">
-    <system-out><![CDATA[2024-02-14T19:39:40.205Z  INFO 46729 --- [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.mindera.users.controller.UserControllerTests]: UserControllerTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-2024-02-14T19:39:40.234Z  INFO 46729 --- [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.mindera.users.UsersApplication for test class com.mindera.users.controller.UserControllerTests
+  <testcase name="testPatchUserUserIdNotMatching" classname="com.mindera.users.controller.UserControllerTests" time="0.383">
+    <system-out><![CDATA[2024-02-15T08:50:34.085Z  INFO 53000 --- [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.mindera.users.controller.UserControllerTests]: UserControllerTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2024-02-15T08:50:34.110Z  INFO 53000 --- [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.mindera.users.UsersApplication for test class com.mindera.users.controller.UserControllerTests
 
 
         ,
@@ -104,15 +104,17 @@
 
 
 
-2024-02-14T19:39:40.267Z  INFO 46729 --- [           main] c.m.u.controller.UserControllerTests     : Starting UserControllerTests using Java 21.0.2 with PID 46729 (started by mindera in /Users/mindera/Desktop/restAPI-SQL)
-2024-02-14T19:39:40.267Z  INFO 46729 --- [           main] c.m.u.controller.UserControllerTests     : No active profile set, falling back to 1 default profile: "default"
-2024-02-14T19:39:40.552Z  INFO 46729 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2024-02-14T19:39:40.565Z  INFO 46729 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 12 ms. Found 1 JPA repository interface.
-2024-02-14T19:39:41.308Z  INFO 46729 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
-2024-02-14T19:39:42.313Z ERROR 46729 --- [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-2 - Exception during pool initialization.
+2024-02-15T08:50:34.142Z  INFO 53000 --- [           main] c.m.u.controller.UserControllerTests     : Starting UserControllerTests using Java 21.0.2 with PID 53000 (started by mindera in /Users/mindera/Desktop/restAPI-SQL)
+2024-02-15T08:50:34.142Z  INFO 53000 --- [           main] c.m.u.controller.UserControllerTests     : No active profile set, falling back to 1 default profile: "default"
+2024-02-15T08:50:34.401Z  INFO 53000 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-02-15T08:50:34.412Z  INFO 53000 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 10 ms. Found 1 JPA repository interface.
+2024-02-15T08:50:35.208Z  INFO 53000 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
+2024-02-15T08:50:36.258Z ERROR 53000 --- [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-2 - Exception during pool initialization.
 
-org.postgresql.util.PSQLException: Connection to localhost:5432 refused. Check that the hostname and port are correct and that the postmaster is accepting TCP/IP connections.
-	at org.postgresql.core.v3.ConnectionFactoryImpl.openConnectionImpl(ConnectionFactoryImpl.java:342) ~[postgresql-42.6.0.jar:42.6.0]
+org.postgresql.util.PSQLException: FATAL: password authentication failed for user "postgres"
+	at org.postgresql.core.v3.ConnectionFactoryImpl.doAuthentication(ConnectionFactoryImpl.java:693) ~[postgresql-42.6.0.jar:42.6.0]
+	at org.postgresql.core.v3.ConnectionFactoryImpl.tryConnect(ConnectionFactoryImpl.java:203) ~[postgresql-42.6.0.jar:42.6.0]
+	at org.postgresql.core.v3.ConnectionFactoryImpl.openConnectionImpl(ConnectionFactoryImpl.java:258) ~[postgresql-42.6.0.jar:42.6.0]
 	at org.postgresql.core.ConnectionFactory.openConnection(ConnectionFactory.java:54) ~[postgresql-42.6.0.jar:42.6.0]
 	at org.postgresql.jdbc.PgConnection.<init>(PgConnection.java:263) ~[postgresql-42.6.0.jar:42.6.0]
 	at org.postgresql.Driver.makeConnection(Driver.java:443) ~[postgresql-42.6.0.jar:42.6.0]
@@ -238,26 +240,16 @@ org.postgresql.util.PSQLException: Connection to localhost:5432 refused. Check t
 	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:162) ~[surefire-booter-3.0.0.jar:3.0.0]
 	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:507) ~[surefire-booter-3.0.0.jar:3.0.0]
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495) ~[surefire-booter-3.0.0.jar:3.0.0]
-Caused by: java.net.ConnectException: Connection refused
-	at java.base/sun.nio.ch.Net.pollConnect(Native Method) ~[na:na]
-	at java.base/sun.nio.ch.Net.pollConnectNow(Net.java:682) ~[na:na]
-	at java.base/sun.nio.ch.NioSocketImpl.timedFinishConnect(NioSocketImpl.java:549) ~[na:na]
-	at java.base/sun.nio.ch.NioSocketImpl.connect(NioSocketImpl.java:592) ~[na:na]
-	at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:327) ~[na:na]
-	at java.base/java.net.Socket.connect(Socket.java:751) ~[na:na]
-	at org.postgresql.core.PGStream.createSocket(PGStream.java:243) ~[postgresql-42.6.0.jar:42.6.0]
-	at org.postgresql.core.PGStream.<init>(PGStream.java:98) ~[postgresql-42.6.0.jar:42.6.0]
-	at org.postgresql.core.v3.ConnectionFactoryImpl.tryConnect(ConnectionFactoryImpl.java:132) ~[postgresql-42.6.0.jar:42.6.0]
+
+2024-02-15T08:50:36.262Z  INFO 53000 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-02-15T08:50:36.270Z  INFO 53000 --- [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-02-15T08:50:36.271Z  INFO 53000 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
+2024-02-15T08:50:37.307Z ERROR 53000 --- [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-2 - Exception during pool initialization.
+
+org.postgresql.util.PSQLException: FATAL: password authentication failed for user "postgres"
+	at org.postgresql.core.v3.ConnectionFactoryImpl.doAuthentication(ConnectionFactoryImpl.java:693) ~[postgresql-42.6.0.jar:42.6.0]
+	at org.postgresql.core.v3.ConnectionFactoryImpl.tryConnect(ConnectionFactoryImpl.java:203) ~[postgresql-42.6.0.jar:42.6.0]
 	at org.postgresql.core.v3.ConnectionFactoryImpl.openConnectionImpl(ConnectionFactoryImpl.java:258) ~[postgresql-42.6.0.jar:42.6.0]
-	... 125 common frames omitted
-
-2024-02-14T19:39:42.317Z  INFO 46729 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2024-02-14T19:39:42.325Z  INFO 46729 --- [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2024-02-14T19:39:42.325Z  INFO 46729 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
-2024-02-14T19:39:43.327Z ERROR 46729 --- [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-2 - Exception during pool initialization.
-
-org.postgresql.util.PSQLException: Connection to localhost:5432 refused. Check that the hostname and port are correct and that the postmaster is accepting TCP/IP connections.
-	at org.postgresql.core.v3.ConnectionFactoryImpl.openConnectionImpl(ConnectionFactoryImpl.java:342) ~[postgresql-42.6.0.jar:42.6.0]
 	at org.postgresql.core.ConnectionFactory.openConnection(ConnectionFactory.java:54) ~[postgresql-42.6.0.jar:42.6.0]
 	at org.postgresql.jdbc.PgConnection.<init>(PgConnection.java:263) ~[postgresql-42.6.0.jar:42.6.0]
 	at org.postgresql.Driver.makeConnection(Driver.java:443) ~[postgresql-42.6.0.jar:42.6.0]
@@ -386,20 +378,8 @@ org.postgresql.util.PSQLException: Connection to localhost:5432 refused. Check t
 	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:162) ~[surefire-booter-3.0.0.jar:3.0.0]
 	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:507) ~[surefire-booter-3.0.0.jar:3.0.0]
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495) ~[surefire-booter-3.0.0.jar:3.0.0]
-Caused by: java.net.ConnectException: Connection refused
-	at java.base/sun.nio.ch.Net.pollConnect(Native Method) ~[na:na]
-	at java.base/sun.nio.ch.Net.pollConnectNow(Net.java:682) ~[na:na]
-	at java.base/sun.nio.ch.NioSocketImpl.timedFinishConnect(NioSocketImpl.java:549) ~[na:na]
-	at java.base/sun.nio.ch.NioSocketImpl.connect(NioSocketImpl.java:592) ~[na:na]
-	at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:327) ~[na:na]
-	at java.base/java.net.Socket.connect(Socket.java:751) ~[na:na]
-	at org.postgresql.core.PGStream.createSocket(PGStream.java:243) ~[postgresql-42.6.0.jar:42.6.0]
-	at org.postgresql.core.PGStream.<init>(PGStream.java:98) ~[postgresql-42.6.0.jar:42.6.0]
-	at org.postgresql.core.v3.ConnectionFactoryImpl.tryConnect(ConnectionFactoryImpl.java:132) ~[postgresql-42.6.0.jar:42.6.0]
-	at org.postgresql.core.v3.ConnectionFactoryImpl.openConnectionImpl(ConnectionFactoryImpl.java:258) ~[postgresql-42.6.0.jar:42.6.0]
-	... 128 common frames omitted
 
-2024-02-14T19:39:43.329Z  WARN 46729 --- [           main] o.h.e.j.e.i.JdbcEnvironmentInitiator     : HHH000342: Could not obtain connection to query metadata
+2024-02-15T08:50:37.309Z  WARN 53000 --- [           main] o.h.e.j.e.i.JdbcEnvironmentInitiator     : HHH000342: Could not obtain connection to query metadata
 
 java.lang.NullPointerException: Cannot invoke "org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(java.sql.SQLException, String)" because the return value of "org.hibernate.resource.transaction.backend.jdbc.internal.JdbcIsolationDelegate.sqlExceptionHelper()" is null
 	at org.hibernate.resource.transaction.backend.jdbc.internal.JdbcIsolationDelegate.delegateWork(JdbcIsolationDelegate.java:116) ~[hibernate-core-6.2.17.Final.jar:6.2.17.Final]
@@ -518,17 +498,17 @@ java.lang.NullPointerException: Cannot invoke "org.hibernate.engine.jdbc.spi.Sql
 	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:507) ~[surefire-booter-3.0.0.jar:3.0.0]
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495) ~[surefire-booter-3.0.0.jar:3.0.0]
 
-2024-02-14T19:39:43.330Z  WARN 46729 --- [           main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2024-02-14T19:39:43.369Z  INFO 46729 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2024-02-14T19:39:43.369Z  INFO 46729 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2024-02-14T19:39:43.465Z  WARN 46729 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2024-02-14T19:39:43.602Z  INFO 46729 --- [           main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@5c7ad877, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@1ec7cf12, org.springframework.security.web.context.SecurityContextHolderFilter@3729ec11, org.springframework.security.web.header.HeaderWriterFilter@e5b24e9, org.springframework.security.web.csrf.CsrfFilter@346fa3bf, org.springframework.security.web.authentication.logout.LogoutFilter@54904fe2, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@7370222b, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@44c3a4c2, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@6c54c79b, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@25499cf8, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@7e12d310, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@1368b62a, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@51338b5, org.springframework.security.web.access.ExceptionTranslationFilter@17bf4515, org.springframework.security.web.access.intercept.AuthorizationFilter@5b232b89]
-2024-02-14T19:39:43.761Z  INFO 46729 --- [           main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
-2024-02-14T19:39:43.761Z  INFO 46729 --- [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
-2024-02-14T19:39:43.763Z  INFO 46729 --- [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 2 ms
-2024-02-14T19:39:43.779Z  INFO 46729 --- [           main] c.m.u.controller.UserControllerTests     : Started UserControllerTests in 3.541 seconds (process running for 20.262)
+2024-02-15T08:50:37.311Z  WARN 53000 --- [           main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-02-15T08:50:37.360Z  INFO 53000 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-02-15T08:50:37.361Z  INFO 53000 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-02-15T08:50:37.442Z  WARN 53000 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-02-15T08:50:37.568Z  INFO 53000 --- [           main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@68af530a, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@67488c90, org.springframework.security.web.context.SecurityContextHolderFilter@7831cf5c, org.springframework.security.web.header.HeaderWriterFilter@238aa1c0, org.springframework.security.web.csrf.CsrfFilter@4875109e, org.springframework.security.web.authentication.logout.LogoutFilter@247dc925, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@2d683b2d, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@4c77eb54, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@b956207, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@6716eb44, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@18a0c124, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@3a85c965, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@5b09e4fa, org.springframework.security.web.access.ExceptionTranslationFilter@2c21d4c9, org.springframework.security.web.access.intercept.AuthorizationFilter@43798225]
+2024-02-15T08:50:37.771Z  INFO 53000 --- [           main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2024-02-15T08:50:37.772Z  INFO 53000 --- [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2024-02-15T08:50:37.773Z  INFO 53000 --- [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2024-02-15T08:50:37.791Z  INFO 53000 --- [           main] c.m.u.controller.UserControllerTests     : Started UserControllerTests in 3.676 seconds (process running for 22.039)
 ]]></system-out>
-    <system-err><![CDATA[java.lang.instrument.IllegalClassFormatException: Error while instrumenting com/mindera/users/repository/UserRepository$MockitoMock$ULLxRDi3.
+    <system-err><![CDATA[java.lang.instrument.IllegalClassFormatException: Error while instrumenting com/mindera/users/repository/UserRepository$MockitoMock$x5ou4wdS.
 	at org.jacoco.agent.rt.internal_3570298.CoverageTransformer.transform(CoverageTransformer.java:94)
 	at java.instrument/java.lang.instrument.ClassFileTransformer.transform(ClassFileTransformer.java:244)
 	at java.instrument/sun.instrument.TransformerManager.transform(TransformerManager.java:188)
@@ -659,7 +639,7 @@ java.lang.NullPointerException: Cannot invoke "org.hibernate.engine.jdbc.spi.Sql
 	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:162)
 	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:507)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
-Caused by: java.io.IOException: Error while instrumenting com/mindera/users/repository/UserRepository$MockitoMock$ULLxRDi3.
+Caused by: java.io.IOException: Error while instrumenting com/mindera/users/repository/UserRepository$MockitoMock$x5ou4wdS.
 	at org.jacoco.agent.rt.internal_3570298.core.instr.Instrumenter.instrumentError(Instrumenter.java:160)
 	at org.jacoco.agent.rt.internal_3570298.core.instr.Instrumenter.instrument(Instrumenter.java:110)
 	at org.jacoco.agent.rt.internal_3570298.CoverageTransformer.transform(CoverageTransformer.java:92)
@@ -672,7 +652,7 @@ Caused by: java.lang.IllegalArgumentException: Unsupported class file major vers
 	at org.jacoco.agent.rt.internal_3570298.core.instr.Instrumenter.instrument(Instrumenter.java:76)
 	at org.jacoco.agent.rt.internal_3570298.core.instr.Instrumenter.instrument(Instrumenter.java:108)
 	... 130 more
-java.lang.instrument.IllegalClassFormatException: Error while instrumenting com/mindera/users/repository/UserRepository$MockitoMock$ULLxRDi3$auxiliary$JtT5f5z8.
+java.lang.instrument.IllegalClassFormatException: Error while instrumenting com/mindera/users/repository/UserRepository$MockitoMock$x5ou4wdS$auxiliary$rHWtJIGu.
 	at org.jacoco.agent.rt.internal_3570298.CoverageTransformer.transform(CoverageTransformer.java:94)
 	at java.instrument/java.lang.instrument.ClassFileTransformer.transform(ClassFileTransformer.java:244)
 	at java.instrument/sun.instrument.TransformerManager.transform(TransformerManager.java:188)
@@ -803,7 +783,7 @@ java.lang.instrument.IllegalClassFormatException: Error while instrumenting com/
 	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:162)
 	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:507)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
-Caused by: java.io.IOException: Error while instrumenting com/mindera/users/repository/UserRepository$MockitoMock$ULLxRDi3$auxiliary$JtT5f5z8.
+Caused by: java.io.IOException: Error while instrumenting com/mindera/users/repository/UserRepository$MockitoMock$x5ou4wdS$auxiliary$rHWtJIGu.
 	at org.jacoco.agent.rt.internal_3570298.core.instr.Instrumenter.instrumentError(Instrumenter.java:160)
 	at org.jacoco.agent.rt.internal_3570298.core.instr.Instrumenter.instrument(Instrumenter.java:110)
 	at org.jacoco.agent.rt.internal_3570298.CoverageTransformer.transform(CoverageTransformer.java:92)
@@ -816,7 +796,7 @@ Caused by: java.lang.IllegalArgumentException: Unsupported class file major vers
 	at org.jacoco.agent.rt.internal_3570298.core.instr.Instrumenter.instrument(Instrumenter.java:76)
 	at org.jacoco.agent.rt.internal_3570298.core.instr.Instrumenter.instrument(Instrumenter.java:108)
 	... 130 more
-java.lang.instrument.IllegalClassFormatException: Error while instrumenting com/mindera/users/repository/UserRepository$MockitoMock$ULLxRDi3$auxiliary$iXkENJtC.
+java.lang.instrument.IllegalClassFormatException: Error while instrumenting com/mindera/users/repository/UserRepository$MockitoMock$x5ou4wdS$auxiliary$eq8u1dp6.
 	at org.jacoco.agent.rt.internal_3570298.CoverageTransformer.transform(CoverageTransformer.java:94)
 	at java.instrument/java.lang.instrument.ClassFileTransformer.transform(ClassFileTransformer.java:244)
 	at java.instrument/sun.instrument.TransformerManager.transform(TransformerManager.java:188)
@@ -947,7 +927,7 @@ java.lang.instrument.IllegalClassFormatException: Error while instrumenting com/
 	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:162)
 	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:507)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
-Caused by: java.io.IOException: Error while instrumenting com/mindera/users/repository/UserRepository$MockitoMock$ULLxRDi3$auxiliary$iXkENJtC.
+Caused by: java.io.IOException: Error while instrumenting com/mindera/users/repository/UserRepository$MockitoMock$x5ou4wdS$auxiliary$eq8u1dp6.
 	at org.jacoco.agent.rt.internal_3570298.core.instr.Instrumenter.instrumentError(Instrumenter.java:160)
 	at org.jacoco.agent.rt.internal_3570298.core.instr.Instrumenter.instrument(Instrumenter.java:110)
 	at org.jacoco.agent.rt.internal_3570298.CoverageTransformer.transform(CoverageTransformer.java:92)
@@ -960,7 +940,7 @@ Caused by: java.lang.IllegalArgumentException: Unsupported class file major vers
 	at org.jacoco.agent.rt.internal_3570298.core.instr.Instrumenter.instrument(Instrumenter.java:76)
 	at org.jacoco.agent.rt.internal_3570298.core.instr.Instrumenter.instrument(Instrumenter.java:108)
 	... 130 more
-java.lang.instrument.IllegalClassFormatException: Error while instrumenting com/mindera/users/entity/User$HibernateProxy$qpVtNYg6.
+java.lang.instrument.IllegalClassFormatException: Error while instrumenting com/mindera/users/entity/User$HibernateProxy$VuxnDSfs.
 	at org.jacoco.agent.rt.internal_3570298.CoverageTransformer.transform(CoverageTransformer.java:94)
 	at java.instrument/java.lang.instrument.ClassFileTransformer.transform(ClassFileTransformer.java:244)
 	at java.instrument/sun.instrument.TransformerManager.transform(TransformerManager.java:188)
@@ -1107,7 +1087,7 @@ java.lang.instrument.IllegalClassFormatException: Error while instrumenting com/
 	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:162)
 	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:507)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
-Caused by: java.io.IOException: Error while instrumenting com/mindera/users/entity/User$HibernateProxy$qpVtNYg6.
+Caused by: java.io.IOException: Error while instrumenting com/mindera/users/entity/User$HibernateProxy$VuxnDSfs.
 	at org.jacoco.agent.rt.internal_3570298.core.instr.Instrumenter.instrumentError(Instrumenter.java:160)
 	at org.jacoco.agent.rt.internal_3570298.core.instr.Instrumenter.instrument(Instrumenter.java:110)
 	at org.jacoco.agent.rt.internal_3570298.CoverageTransformer.transform(CoverageTransformer.java:92)
@@ -1120,7 +1100,7 @@ Caused by: java.lang.IllegalArgumentException: Unsupported class file major vers
 	at org.jacoco.agent.rt.internal_3570298.core.instr.Instrumenter.instrument(Instrumenter.java:76)
 	at org.jacoco.agent.rt.internal_3570298.core.instr.Instrumenter.instrument(Instrumenter.java:108)
 	... 146 more
-java.lang.instrument.IllegalClassFormatException: Error while instrumenting com/mindera/users/entity/User$HibernateInstantiator$XtHMhjMH.
+java.lang.instrument.IllegalClassFormatException: Error while instrumenting com/mindera/users/entity/User$HibernateInstantiator$MulodB9g.
 	at org.jacoco.agent.rt.internal_3570298.CoverageTransformer.transform(CoverageTransformer.java:94)
 	at java.instrument/java.lang.instrument.ClassFileTransformer.transform(ClassFileTransformer.java:244)
 	at java.instrument/sun.instrument.TransformerManager.transform(TransformerManager.java:188)
@@ -1260,7 +1240,7 @@ java.lang.instrument.IllegalClassFormatException: Error while instrumenting com/
 	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:162)
 	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:507)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
-Caused by: java.io.IOException: Error while instrumenting com/mindera/users/entity/User$HibernateInstantiator$XtHMhjMH.
+Caused by: java.io.IOException: Error while instrumenting com/mindera/users/entity/User$HibernateInstantiator$MulodB9g.
 	at org.jacoco.agent.rt.internal_3570298.core.instr.Instrumenter.instrumentError(Instrumenter.java:160)
 	at org.jacoco.agent.rt.internal_3570298.core.instr.Instrumenter.instrument(Instrumenter.java:110)
 	at org.jacoco.agent.rt.internal_3570298.CoverageTransformer.transform(CoverageTransformer.java:92)
@@ -1276,15 +1256,18 @@ Caused by: java.lang.IllegalArgumentException: Unsupported class file major vers
 ]]></system-err>
   </testcase>
   <testcase name="testDeleteUserWhenFindByIdReturnsEmpty" classname="com.mindera.users.controller.UserControllerTests" time="0.007"/>
-  <testcase name="testGetAllUsers" classname="com.mindera.users.controller.UserControllerTests" time="0.024"/>
-  <testcase name="testPutUserWhenFindByIdReturnsNullThrowsNotFound" classname="com.mindera.users.controller.UserControllerTests" time="0.007"/>
-  <testcase name="testPutUserWhenUserIdDoesNotMatchReturnsUserThrowsNotMatchingException" classname="com.mindera.users.controller.UserControllerTests" time="0.006"/>
-  <testcase name="testPostUserWithEmptyOrNullFieldsThrowsCannotBeEmptyOrNullException" classname="com.mindera.users.controller.UserControllerTests" time="0.014"/>
-  <testcase name="testPatchUserSuccess" classname="com.mindera.users.controller.UserControllerTests" time="0.01"/>
+  <testcase name="testGetAllUsers" classname="com.mindera.users.controller.UserControllerTests" time="0.026"/>
+  <testcase name="testPutUserWhenFindByIdReturnsNullThrowsNotFound" classname="com.mindera.users.controller.UserControllerTests" time="0.008"/>
+  <testcase name="testPutUserWhenUserIdDoesNotMatchReturnsUserThrowsNotMatchingException" classname="com.mindera.users.controller.UserControllerTests" time="0.007"/>
+  <testcase name="testPostUserWithEmptyOrNullFieldsThrowsCannotBeEmptyOrNullException" classname="com.mindera.users.controller.UserControllerTests" time="0.017">
+    <system-out><![CDATA[2024-02-15T08:50:38.243Z  WARN 53000 --- [           main] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.http.converter.HttpMessageNotReadableException: Required request body is missing: public com.mindera.users.entity.User com.mindera.users.controller.UserController.addUser(com.mindera.users.entity.User)]
+]]></system-out>
+  </testcase>
+  <testcase name="testPatchUserSuccess" classname="com.mindera.users.controller.UserControllerTests" time="0.011"/>
   <testcase name="testPatchUserUserNotFound" classname="com.mindera.users.controller.UserControllerTests" time="0.007"/>
-  <testcase name="testPatchUserWithDifferentEmailThrowsUserCannotChangeException" classname="com.mindera.users.controller.UserControllerTests" time="0.006"/>
-  <testcase name="testPutUserWhenFindByIdReturnsUserThrowsOk" classname="com.mindera.users.controller.UserControllerTests" time="0.006"/>
-  <testcase name="testDeleteUserWhenFindByIdReturnsUserSuccess" classname="com.mindera.users.controller.UserControllerTests" time="0.008"/>
-  <testcase name="testPostUser" classname="com.mindera.users.controller.UserControllerTests" time="0.08"/>
-  <testcase name="testPutUserWithDifferentEmailThrowsUserCannotChangeException" classname="com.mindera.users.controller.UserControllerTests" time="0.005"/>
+  <testcase name="testPatchUserWithDifferentEmailThrowsUserCannotChangeException" classname="com.mindera.users.controller.UserControllerTests" time="0.007"/>
+  <testcase name="testPutUserWhenFindByIdReturnsUserThrowsOk" classname="com.mindera.users.controller.UserControllerTests" time="0.007"/>
+  <testcase name="testDeleteUserWhenFindByIdReturnsUserSuccess" classname="com.mindera.users.controller.UserControllerTests" time="0.009"/>
+  <testcase name="testPostUser" classname="com.mindera.users.controller.UserControllerTests" time="0.099"/>
+  <testcase name="testPutUserWithDifferentEmailThrowsUserCannotChangeException" classname="com.mindera.users.controller.UserControllerTests" time="0.008"/>
 </testsuite>
